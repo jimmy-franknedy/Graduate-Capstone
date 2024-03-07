@@ -1,0 +1,16 @@
+pytest
+paramiko
+pyyaml
+numpy==1.23.5
+gym
+prettytable
+docutils
+ray[rllib]==2.0.1
+gymnasium
+dm-tree
+pyarrow
+seaborn
+torch
+pandas
+protobuf<3.20
+tensorflow

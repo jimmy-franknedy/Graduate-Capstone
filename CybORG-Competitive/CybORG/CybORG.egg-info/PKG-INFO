@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: CybORG
+Version: 2.1
+Summary: A Cyber Security Research Environment
+License-File: LICENSE.txt
+Requires-Dist: pytest
+Requires-Dist: paramiko
+Requires-Dist: pyyaml
+Requires-Dist: numpy==1.23.5
+Requires-Dist: gym
+Requires-Dist: prettytable
+Requires-Dist: docutils
+Requires-Dist: ray[rllib]==2.0.1
+Requires-Dist: gymnasium
+Requires-Dist: dm-tree
+Requires-Dist: pyarrow
+Requires-Dist: seaborn
+Requires-Dist: torch
+Requires-Dist: pandas
+Requires-Dist: protobuf<3.20
+Requires-Dist: tensorflow
