@@ -1,1 +1,1 @@
-# Graduate-Capstone
+# Graduate Capstone
