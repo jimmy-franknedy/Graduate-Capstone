@@ -6,6 +6,14 @@ from CybORG.Shared.Actions import (
     Analyse,
     Remove,
     Restore,
+    DecoyApache,
+    DecoyFemitter,
+    DecoyHarakaSMPT,
+    DecoySmss,
+    DecoySSHD,
+    DecoySvchost,
+    DecoyTomcat,
+    DecoyVsftpd,
     PrivilegeEscalate,
     ExploitRemoteService,
     DiscoverRemoteSystems,
@@ -52,6 +60,14 @@ class CompetitiveWrapper(BaseWrapper):
             "Analyse",
             "Remove",
             "Restore",
+            "DecoyApache", 
+            "DecoyFemitter", 
+            "DecoyHarakaSMPT", 
+            "DecoySmss", 
+            "DecoySSHD", 
+            "DecoySvchost", 
+            "DecoyTomcat", 
+            "DecoyVsftpd",
         )  # actions with a hostname parameter
         red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
         red_network_actions = [
@@ -89,15 +105,39 @@ class CompetitiveWrapper(BaseWrapper):
     def resolve_blue_action(self, action):
         # assume a "single session" in the CybORG action space
         cyborg_space = self.get_action_space(agent="Blue")
+
+        # print("Checking the cyborg_space")
+        # print(cyborg_space)
+
+        # This is the part where the author only selects one session! I think we have a total of 13 sessions? 
         session = list(cyborg_space["session"].keys())[0]
 
         cyborg_action = self.blue_action_list[action]
+
         if cyborg_action[0] == "Analyse":
             return Analyse(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "Remove":
             return Remove(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "Restore":
             return Restore(hostname=cyborg_action[1], agent="Blue", session=session)
+
+        elif cyborg_action[0] == "DecoyApache":
+            return DecoyApache(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoyFemitter":
+            return DecoyFemitter(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoyHarakaSMPT":
+            return DecoyHarakaSMPT(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoySmss":
+            return DecoySmss(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoySSHD":
+            return DecoySSHD(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoySvchost":
+            return DecoySvchost(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoyTomcat":
+            return DecoyTomcat(hostname=cyborg_action[1], agent="Blue", session=session)
+        elif cyborg_action[0] == "DecoyVsftpd":
+            return DecoyVsftpd(hostname=cyborg_action[1], agent="Blue", session=session)
+
         else:
             return Monitor(agent="Blue", session=session)
     

@@ -63,7 +63,17 @@ blue_host_actions = (
     "Analyse",
     "Remove",
     "Restore",
+    "DecoyApache", 
+    "DecoyFemitter", 
+    "DecoyHarakaSMPT", 
+    "DecoySmss", 
+    "DecoySSHD", 
+    "DecoySvchost", 
+    "DecoyTomcat", 
+    "DecoyVsftpd",
 )  # actions with a hostname parameter
+
+
 red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
 red_network_actions = [
     "DiscoverSystems"
