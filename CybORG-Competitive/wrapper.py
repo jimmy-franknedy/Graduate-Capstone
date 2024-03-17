@@ -136,6 +136,12 @@ class CompetitiveWrapper(BaseWrapper):
 
     def map_network(self, env):
 
+        # Confirmation
+        # Check the current mapping of IP Addresses to hostnames
+        # print("Current ip_map() is: ")
+        # print(env.get_ip_map())
+        # print("Done!")
+
         # Ensure that the ordering of the subnet and IP address are correct
         i = 0  # count through the networks to assign the correct IP
         for subnet in env.get_action_space(agent="Red")["subnet"]:
@@ -150,9 +156,11 @@ class CompetitiveWrapper(BaseWrapper):
 
             if 0 <= i and i < 7:
                 self.ip_map[self.hostnames[i]] = address
+                # Confirmation - Check to see mapping between IP Addresses to hostnames
                 # print("i: ", i , "mapping ", self.hostnames[i], "to ", address)
             if  7 < i:
                 self.ip_map[self.hostnames[i-1]] = address
+                # Confirmation - Check to see mapping between IP Addresses to hostnames
                 # print("i: ", i , "mapping ", self.hostnames[i-1], "to ", address)
             i += 1
 
@@ -204,7 +212,6 @@ class CompetitiveWrapper(BaseWrapper):
         # note this is the blue reward leaving the wrapper, red trainer must flip signal
 
         return result
-
 
     def _initial_blue_obs(self, obs):
         obs = obs.copy()
@@ -378,6 +385,10 @@ class CompetitiveWrapper(BaseWrapper):
     def _create_blue_vector(self, success):
         table = self._create_blue_table(success)._rows
 
+        # What does the table look like?
+        #for row in table:
+        #    print(row)
+
         proto_vector = []
 
         # five flags for each host:
@@ -432,6 +443,10 @@ class CompetitiveWrapper(BaseWrapper):
         turn_vector = [0]*(self.turns_per_game+1)
         turn_vector[self.turn] = 1
         proto_vector.extend(turn_vector)
+
+        # Final observation vector?
+        # print("Final observation vector is: ", np.array(proto_vector))
+        # print("Length of final obs vector is: ", len(np.array(proto_vector)))
 
         return np.array(proto_vector)
     
@@ -604,6 +619,10 @@ class CompetitiveWrapper(BaseWrapper):
     def _create_red_vector(self):
         table = self._create_red_table()._rows
 
+        # What does the table look like?
+        #for row in table:
+        #    print(row)
+
         # success flag for previous action. Not included for now
         # success = int(self.success.value) if self.success.value < 2 else 0
 
@@ -671,14 +690,18 @@ class CompetitiveWrapper(BaseWrapper):
                         self.impact_status = [0]
 
         proto_vector = []
-        proto_vector.extend(self.host_scan_status) # 5 bits
-        proto_vector.extend(host_status) # 15 bits
-        proto_vector.extend(self.subnet_scan_status) # 4 bits
-        proto_vector.extend(subnet_status) # 4 bits
-        proto_vector.extend(self.impact_status) # 1 bit
+        proto_vector.extend(self.host_scan_status)      # 5 bits
+        proto_vector.extend(host_status)                # 15 bits
+        proto_vector.extend(self.subnet_scan_status)    # 4 bits
+        proto_vector.extend(subnet_status)              # 4 bits
+        proto_vector.extend(self.impact_status)         # 1 bit
         turn_vector = [0]*(self.turns_per_game+1)
         turn_vector[self.turn] = 1
-        proto_vector.extend(turn_vector)
+        proto_vector.extend(turn_vector)                # 1 bit
+
+        # Final observation vector?
+        # print("Final observation vector is: ", np.array(proto_vector))
+        # print("Length of final obs vector is: ", len(np.array(proto_vector)))
 
         return np.array(proto_vector)
     
