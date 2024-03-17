@@ -103,13 +103,18 @@ class CompetitiveWrapper(BaseWrapper):
     
     # convert the discrete action choice into its corresponding CybORG action
     def resolve_blue_action(self, action):
+        
         # assume a "single session" in the CybORG action space
         cyborg_space = self.get_action_space(agent="Blue")
 
         # print("Checking the cyborg_space")
         # print(cyborg_space)
 
-        # This is the part where the author only selects one session! I think we have a total of 13 sessions? 
+        # Check how many sessions Blue has?
+        print("Blu sessions")
+        print(list(cyborg_space["session"]))
+
+        # This is the part where the author only selects one session! I think we have a total of 13 sessions, but 11 usable sessions for both agents
         session = list(cyborg_space["session"].keys())[0]
 
         cyborg_action = self.blue_action_list[action]
@@ -142,8 +147,17 @@ class CompetitiveWrapper(BaseWrapper):
             return Monitor(agent="Blue", session=session)
     
     def resolve_red_action(self, action):
+
         # assume a single session in the cyborg action space
         cyborg_space = self.get_action_space(agent="Red")
+
+        # Print the action space
+        # print("Red Agent Action Space",cyborg_space)
+
+        # Print how many sessions red may have?
+        print("Red sessions")
+        print(list(cyborg_space["session"]))
+
         session = list(cyborg_space["session"].keys())[0]
 
         cyborg_action = self.red_action_list[action]

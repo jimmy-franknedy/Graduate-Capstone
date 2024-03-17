@@ -18,6 +18,7 @@ REWARD_MAX_DECIMAL_PLACES = 1
 HostReward = namedtuple('HostReward','confidentiality availability')
 
 class PwnRewardCalculator(RewardCalculator):
+    
     # this reward calculator provides a reward to Red due to changes in the number of privileged sessions
     def __init__(self, agent_name: str, scenario: Scenario):
         super().__init__(agent_name)
@@ -114,7 +115,6 @@ class DistruptRewardCalculator(RewardCalculator):
         self.impacted_hosts = dict(zip(disrupted,availability_scores))
         reward = sum(availability_scores)
         return round(reward, REWARD_MAX_DECIMAL_PLACES)
-
 
 class HybridImpactPwnRewardCalculator(RewardCalculator):
     # Hybrid of availability and confidentiality reward calculator
