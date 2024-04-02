@@ -15,8 +15,15 @@ from statistics import mean
 
 # Updated Hyper-parameters
 timesteps = 30
-batch_size = 61440
-mini_batch_size = 3840
+
+# Batch and mini-batchsizes
+b1 = 61440         # original batch size
+mb1 = 3840         # ^
+b2 = 548720        # adjusted batch size given red has 38 possible actions; following same scaling as original
+mb2 = 34295        # ^
+
+batch_size = b2
+mini_batch_size = mb2
 
 gae = 1
 gamma = 0.99
@@ -91,6 +98,8 @@ red_action_list = (
     + list(product(red_network_actions, subnets))
     + list(product(red_host_actions, hostnames))
 )
+
+print("environments.py: ", len(red_action_list))
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 

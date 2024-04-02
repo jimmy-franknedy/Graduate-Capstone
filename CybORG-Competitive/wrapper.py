@@ -86,6 +86,7 @@ class CompetitiveWrapper(BaseWrapper):
             + list(product(red_network_actions, self.subnets))
             + list(product(red_host_actions, self.hostnames))
         )
+        # print("wrapper.py: ", len(self.red_action_list)) # Red has 38 possible actions
 
         self.subnet_map = {}  # subnets are ordered [User, Enterprise, Op]
         self.ip_map = (
