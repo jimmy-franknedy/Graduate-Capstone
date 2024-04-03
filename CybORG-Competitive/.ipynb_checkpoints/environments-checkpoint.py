@@ -4,6 +4,10 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
+#  IMPALA
+from ray.rllib.algorithms.impala import Impala, ImpalaConfig
+
+# PPO
 from ray.rllib.algorithms.ppo import PPO, PPOConfig
 from ray.tune.registry import register_env
 
@@ -15,13 +19,23 @@ from statistics import mean
 
 # Updated Hyper-parameters
 timesteps = 30
-batch_size = 61440
-mini_batch_size = 3840
+
+# Set the number of workers
+w = 4
+
+# Batch and mini-batchsizes
+b1 = 61440          # original batch size
+mb1 = 3840          # ^
+b2 = 548720         # adjusted batch size given red has 38 possible actions; following same scaling as original
+mb2 = 34295         # ^
+
+batch_size = b2
+mini_batch_size = mb2
 
 gae = 1
 gamma = 0.99
-epochs = 30
-mixer = 0.9 # for training opponent best-response, how many games with current agent policy instead of agent pool
+epochs = 30         # epoch value
+mixer = 0.9         # for training opponent best-response, how many games with current agent policy instead of agent pool
 
 red_batch_size = batch_size
 red_minibatch_size = mini_batch_size
@@ -44,21 +58,36 @@ act_func = "tanh"
 experiment_name = "phase1"
 
 # construct the blue and red action spaces
-subnets = "Op", "User"
+subnets = "Enterprise", "Op", "User"
 hostnames = (
+    "Enterprise0",
+    "Enterprise1",
+    "Enterprise2",
     "Op_Host0",
+    "Op_Host1",
+    "Op_Host2",
     "Op_Server0",
     "User1",
     "User2",
     "User3",
-    "User4",    # added
+    "User4",
 )
 blue_lone_actions = [["Monitor"]]  # actions with no parameters
 blue_host_actions = (
     "Analyse",
     "Remove",
     "Restore",
+    "DecoyApache", 
+    "DecoyFemitter", 
+    "DecoyHarakaSMPT", 
+    "DecoySmss", 
+    "DecoySSHD", 
+    "DecoySvchost", 
+    "DecoyTomcat", 
+    "DecoyVsftpd",
 )  # actions with a hostname parameter
+
+
 red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
 red_network_actions = [
     "DiscoverSystems"
@@ -76,6 +105,8 @@ red_action_list = (
     + list(product(red_network_actions, subnets))
     + list(product(red_host_actions, hostnames))
 )
+
+print("environments.py: ", len(red_action_list))
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 
@@ -110,6 +141,8 @@ class BlueTrainer(gym.Env):
         
     def reset(self):
 
+
+        # This is how we are selecting the opposing policy from the opponent pool: Uniform Sampling
         pool_file = open("./policies/red_opponent_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
@@ -124,7 +157,7 @@ class BlueTrainer(gym.Env):
         path_file.close()
         self.red_opponent.restore(checkpoint_path)
     
-        obs, self.red_obs = self.cyborg.reset()    
+        obs, self.red_obs = self.cyborg.reset()
         return obs
     
     # the step function should receive a blue action
@@ -193,6 +226,7 @@ class BlueOpponent(gym.Env):
         
     def reset(self):
 
+        # This is how we are choosing and opposing policy from the opponent pool: Uniform Sampling
         pool_file = open("./policies/red_competitive_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
@@ -525,7 +559,8 @@ class DedicatedRedEnv(gym.Env):
 
         return (obs, reward, done, info)
 
-def build_blue_agent(opponent=False, dedicated=False, workers=4, fresh=True):
+def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
+
     # register the custom environment
     if dedicated:
         select_env = "DedicatedBlueEnv"
@@ -616,7 +651,7 @@ def build_blue_agent(opponent=False, dedicated=False, workers=4, fresh=True):
             path_file.close() 
     return blue_agent
 
-def build_red_agent(opponent=False, dedicated=False, workers=4, fresh=True):
+def build_red_agent(opponent=False, dedicated=False, workers=w, fresh=True):
     # register the custom environment
     if dedicated:
         select_env = "DedicatedRedEnv"
@@ -709,7 +744,8 @@ def build_red_agent(opponent=False, dedicated=False, workers=4, fresh=True):
 
 def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_moves=None, red_moves=None, random_blue=False, random_red=False):
     base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
-    # wrapper to accept red and blue actions, and return  observations
+    
+    # wrapper to accept red and blue actions, and return observations
     cyborg = CompetitiveWrapper(env=base_cyborg, turns=timesteps, output_mode="vector")
 
     scores = []

@@ -4,6 +4,10 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
+#  IMPALA
+from ray.rllib.algorithms.impala import Impala, ImpalaConfig
+
+# PPO
 from ray.rllib.algorithms.ppo import PPO, PPOConfig
 from ray.tune.registry import register_env
 
@@ -16,19 +20,22 @@ from statistics import mean
 # Updated Hyper-parameters
 timesteps = 30
 
+# Set the number of workers
+w = 4
+
 # Batch and mini-batchsizes
-b1 = 61440         # original batch size
-mb1 = 3840         # ^
-b2 = 548720        # adjusted batch size given red has 38 possible actions; following same scaling as original
-mb2 = 34295        # ^
+b1 = 61440          # original batch size
+mb1 = 3840          # ^
+b2 = 548720         # adjusted batch size given red has 38 possible actions; following same scaling as original
+mb2 = 34295         # ^
 
 batch_size = b2
 mini_batch_size = mb2
 
 gae = 1
 gamma = 0.99
-epochs = 30
-mixer = 0.9 # for training opponent best-response, how many games with current agent policy instead of agent pool
+epochs = 30         # epoch value
+mixer = 0.9         # for training opponent best-response, how many games with current agent policy instead of agent pool
 
 red_batch_size = batch_size
 red_minibatch_size = mini_batch_size
@@ -134,6 +141,8 @@ class BlueTrainer(gym.Env):
         
     def reset(self):
 
+
+        # This is how we are selecting the opposing policy from the opponent pool: Uniform Sampling
         pool_file = open("./policies/red_opponent_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
@@ -217,6 +226,7 @@ class BlueOpponent(gym.Env):
         
     def reset(self):
 
+        # This is how we are choosing and opposing policy from the opponent pool: Uniform Sampling
         pool_file = open("./policies/red_competitive_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
@@ -549,7 +559,7 @@ class DedicatedRedEnv(gym.Env):
 
         return (obs, reward, done, info)
 
-def build_blue_agent(opponent=False, dedicated=False, workers=4, fresh=True):
+def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
 
     # register the custom environment
     if dedicated:
@@ -641,7 +651,7 @@ def build_blue_agent(opponent=False, dedicated=False, workers=4, fresh=True):
             path_file.close() 
     return blue_agent
 
-def build_red_agent(opponent=False, dedicated=False, workers=4, fresh=True):
+def build_red_agent(opponent=False, dedicated=False, workers=w, fresh=True):
     # register the custom environment
     if dedicated:
         select_env = "DedicatedRedEnv"
