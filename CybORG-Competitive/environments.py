@@ -4,7 +4,7 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
-#  IMPALA
+#  IMPALA (ER)
 from ray.rllib.algorithms.impala import Impala, ImpalaConfig
 
 # PPO
