@@ -4,7 +4,7 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
-#  IMPALA
+#  IMPALA (ER)
 from ray.rllib.algorithms.impala import Impala, ImpalaConfig
 
 # PPO
@@ -106,7 +106,7 @@ red_action_list = (
     + list(product(red_host_actions, hostnames))
 )
 
-print("environments.py: ", len(red_action_list))
+# print("environments.py: ", len(red_action_list))
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 

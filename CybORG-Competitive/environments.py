@@ -4,7 +4,7 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
-#  IMPALA (ER)
+#  IMPALA
 from ray.rllib.algorithms.impala import Impala, ImpalaConfig
 
 # PPO
@@ -140,7 +140,6 @@ class BlueTrainer(gym.Env):
         self.opponent_id = 0
         
     def reset(self):
-
 
         # This is how we are selecting the opposing policy from the opponent pool: Uniform Sampling
         pool_file = open("./policies/red_opponent_pool/pool_size", "r")
