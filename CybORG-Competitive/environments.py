@@ -17,35 +17,32 @@ from random import randint, random
 from scipy.special import softmax
 from statistics import mean
 
+# Flag for setting certain parameters
+# Set to TRUE when running training on JupyterHub
+# Set to FALS when running on laptop; mainly for testing setup of code
+flag = False
+
 # Updated Hyper-parameters
 timesteps = 30
 
-# Set the number of workers
+# Set the number of workers, and numGPUs given the flag
 w = 4
+ngpus = 0
+if(flag):
+    w = 40
+    ngpus = 1
 
-# Batch and mini-batchsizes
-b1 = 61440          # original batch size
-mb1 = 3840          # ^
-b2 = 548720         # adjusted batch size given red has 38 possible actions; following same scaling as original
-mb2 = 34295         # ^
-
-batch_size = b2
-mini_batch_size = mb2
-
+# Training parameters
 gae = 1
 gamma = 0.99
 epochs = 30         # epoch value
 mixer = 0.9         # for training opponent best-response, how many games with current agent policy instead of agent pool
 
-red_batch_size = batch_size
-red_minibatch_size = mini_batch_size
 red_lr = 5e-4
 red_entropy = 1e-3
 red_kl = 1
 red_clip_param = 0.3
 
-blue_batch_size = batch_size
-blue_minibatch_size = mini_batch_size
 blue_lr = 5e-4
 blue_entropy = 1e-3
 blue_kl = 1
@@ -87,7 +84,6 @@ blue_host_actions = (
     "DecoyVsftpd",
 )  # actions with a hostname parameter
 
-
 red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
 red_network_actions = [
     "DiscoverSystems"
@@ -106,7 +102,34 @@ red_action_list = (
     + list(product(red_host_actions, hostnames))
 )
 
-# print("environments.py: ", len(red_action_list))
+# Batch and mini-batchsizes
+b1 = 61440          # original batch size
+mb1 = 3840          # ^
+
+# Number of actions that red should take in sequence to achieve specific goal
+red_action_sequence = 3
+
+# Number of 'timesteps' red gets to take actions to try and achieve the specific action sequence
+red_action_tries = pow(len(red_action_list),red_action_sequence)
+red_multiplier = 9
+
+b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
+mb_scaler = 16
+mb2 = b2 // 16                                  # ^
+
+batch_size = 100
+mini_batch_size = 10
+
+if(flag):
+    batch_size = b2
+    mini_batch_size = mb2
+
+red_batch_size = batch_size
+red_minibatch_size = mini_batch_size
+blue_batch_size = batch_size
+blue_minibatch_size = mini_batch_size
+# print(batch_size,mini_batch_size)
+
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 
@@ -589,7 +612,7 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
     # set the RLLib configuration
     blue_config = {
         "env": "blue_trainer",
-        "num_gpus": 0,
+        "num_gpus": ngpus,
         "num_workers": workers,
         "train_batch_size": blue_batch_size,
         "sgd_minibatch_size": blue_minibatch_size,
@@ -680,7 +703,7 @@ def build_red_agent(opponent=False, dedicated=False, workers=w, fresh=True):
     # set the RLLib configuration
     red_config = {
         "env": "RedTrainer",
-        "num_gpus":  0,
+        "num_gpus":  ngpus,
         "num_workers": workers,
         "train_batch_size": red_batch_size,
         "sgd_minibatch_size": red_minibatch_size,
