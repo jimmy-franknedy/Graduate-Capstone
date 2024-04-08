@@ -18,19 +18,19 @@ from scipy.special import softmax
 from statistics import mean
 
 # Flag for setting certain parameters
-# Set to TRUE when running training on JupyterHub
-# Set to FALS when running on laptop; mainly for testing setup of code
-flag = False
+# Set to TRUE   when running on laptop; mainly for testing setup of code
+# Set to FALSE  when running on JupyterHub
+laptop = True
 
 # Updated Hyper-parameters
 timesteps = 30
 
 # Set the number of workers, and numGPUs given the flag
-w = 4
-ngpus = 0
-if(flag):
-    w = 40
-    ngpus = 1
+w = 40
+ngpus = 1
+if(laptop):
+    w = 4
+    ngpus = 0
 
 # Training parameters
 gae = 1
@@ -109,20 +109,20 @@ mb1 = 3840          # ^
 # Number of actions that red should take in sequence to achieve specific goal
 red_action_sequence = 3
 
-# Number of 'timesteps' red gets to take actions to try and achieve the specific action sequence
+# Number of 'timesteps' red gets to take actions to try and achieve the specific action sequence (e.g 38 ^3)
 red_action_tries = pow(len(red_action_list),red_action_sequence)
-red_multiplier = 9
+red_multiplier = 5
+mb_scaler = 16
 
 b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
-mb_scaler = 16
-mb2 = b2 // 16                                  # ^
+mb2 = b2 // mb_scaler                           # ^
 
-batch_size = 100
-mini_batch_size = 10
+batch_size = b2
+mini_batch_size = mb2
 
-if(flag):
-    batch_size = b2
-    mini_batch_size = mb2
+if(laptop):
+    batch_size = 100
+    mini_batch_size = 10
 
 red_batch_size = batch_size
 red_minibatch_size = mini_batch_size
@@ -170,6 +170,10 @@ class BlueTrainer(gym.Env):
         pool_file.close()
 
         if red_pool_size > 0:
+            # Implement an 80/20 split where 80% of the time opponent uses the most recent policy and 20% of the time
+            # opponent uses quality based sampling
+
+
             self.opponent_id = randint(1, red_pool_size)
         else:
             self.opponent_id = 0
@@ -611,31 +615,143 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
 
     # set the RLLib configuration
     blue_config = {
+
+        # (a) over - authors of competitive RL for ACOs overwrote default value
+        # (u) over - Jimmy overwrote default value
+
+        # GOOD
+        # location:     algorithm_config.py
         "env": "blue_trainer",
+
+        # GOOD
+        # location:     (impala.py) algorithm_config.py
         "num_gpus": ngpus,
-        "num_workers": workers,
+
+        # GOOD
+        # location:     (impala.py, ppo.py) algorithm_config.py
+        "num_workers": workers, 
+
+        # GOOD
+        # location:     (impala.py, ppo.py) algorithm_config.py
         "train_batch_size": blue_batch_size,
-        "sgd_minibatch_size": blue_minibatch_size,
-        'rollout_fragment_length': int(blue_batch_size/workers),
-        'num_sgd_iter': epochs,
-        'batch_mode': "truncate_episodes",
-        "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # (a) over:     yes
+        # "sgd_minibatch_size": blue_minibatch_size,
+        # location:     (impala.py) - SPECIFIC
+        # (u) over:     yes; matches author
+        "minibatch_buffer_size": blue_minibatch_size
+
+        # GOOD
+        # location:     (impala.py, ppo.py) algorithm_config.py
+        "rollout_fragment_length": int(blue_batch_size/workers),
+
+        # GOOD
+        # location:     (impala.py, ppo.py)
+        # (a) over:     yes
+        # (u) over:     yes; matches author
+        "num_sgd_iter": epochs,
+
+        # !
+        # location:     algorithm_config
+        "batch_mode": "truncate_episodes",
+
+        # SHOULD BE GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+        # location:     (impala.py) - SPECIFIC
+        "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+        
+        # GOOD
+        # location:     (impala.py, ppo.py) algorithm_config.py
+        # (a) over:     yes
+        # (u) over:     yes; matches author
         "lr": blue_lr,
+
+        # !
+        # location:     (impala.py, ppo.py)
+        # (a) over:     yes; created the var. for training
+        # (u) over:     yes; matches author     
         "entropy_coeff": blue_entropy,
+
+        # GOOD
+        # location:     algorithm_config
         "observation_space": MultiBinary(blue_obs_space),
+
+        # GOOD
+        # location:     algorithm_config
         "action_space": Discrete(len(blue_action_list)),
+
+        # GOOD
+        # location:     algorithm_config
         "recreate_failed_workers": True,
-        'vf_share_layers': False,
-        'lambda': gae,
-        'gamma': gamma,
-        'kl_coeff': blue_kl,
-        'kl_target': 0.01,
-        'clip_rewards': False,
-        'clip_param': blue_clip_param,
-        'vf_clip_param': 50.0,
-        'vf_loss_coeff': 0.01,
-        'log_sys_usage': False,
-        'disable_env_checking': True,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'vf_share_layers': False,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'lambda': gae,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'gamma': gamma,
+        
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'kl_coeff': blue_kl,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'kl_target': 0.01,
+
+        # GOOD
+        # location:     algorithm_config.py
+        # (a) over:     yes
+        # (u) over:     yes; matches author
+        "clip_rewards": False,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'clip_param': blue_clip_param,
+
+        # GOOD
+        # location:     (ppo.py) - SPECIFIC
+        # 'vf_clip_param': 50.0,
+
+        # !
+        # location:     (impala.py, ppo.py)
+        # note:         'vf_loss_coeff': 0.01 - from compRL for ACO authors
+        #               'vf_loss_coeff': 1.0  - from ppo.py
+        #               'vf_loss_coeff': 0.5  - from impala.py
+        "vf_loss_coeff": 0.01,
+
+        # GOOD
+        # location:     algorithm_config.py
+        "log_sys_usage": False,
+
+        # GOOD
+        # location:     algorithm_config.py
+        "disable_env_checking": True,
+
+        #########################################
+        # Specific Impala Set Parameters        #
+        # from impala.py                        #
+        # starts at "IMPALA specific settings"  #
+        #########################################
+
+        # Only using 1 GPU?
+        "num_multi_gpu_tower_stacks": 1,
+
+        # Ignore experience replay for now
+        # "replay_proportion": 0.5,
+        # "replay_buffer_num_slots": blue_batch_size,
+        "learner_queue_size": blue_batch_size,
+
+        # Units in seconds
+        "learner_queue_timeout": 120,
     }
 
     if dedicated:
@@ -661,7 +777,7 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
             path_file.write("0")
             path_file.close()
     else:
-        blue_agent = PPO(config=blue_config, env=BlueTrainer)
+        blue_agent = Impala(config=blue_config, env=BlueTrainer)
         if fresh:
             checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/blue_competitive_pool/competitive_blue_0")
             print(checkpoint_path)
