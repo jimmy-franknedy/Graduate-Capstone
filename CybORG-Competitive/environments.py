@@ -18,19 +18,19 @@ from scipy.special import softmax
 from statistics import mean
 
 # Flag for setting certain parameters
-# Set to TRUE when running training on JupyterHub
-# Set to FALS when running on laptop; mainly for testing setup of code
-flag = False
+# Set to TRUE   when running on laptop; mainly for testing setup of code
+# Set to FALSE  when running on JupyterHub
+laptop = True
 
 # Updated Hyper-parameters
 timesteps = 30
 
 # Set the number of workers, and numGPUs given the flag
-w = 4
-ngpus = 0
-if(flag):
-    w = 40
-    ngpus = 1
+w = 32
+ngpus = 1
+if(laptop):
+    w = 4
+    ngpus = 0
 
 # Training parameters
 gae = 1
@@ -117,12 +117,12 @@ b2 = red_action_tries * red_multiplier          # adjusted batch size given red 
 mb_scaler = 16
 mb2 = b2 // 16                                  # ^
 
-batch_size = 100
-mini_batch_size = 10
+batch_size = b2
+mini_batch_size = mb2
 
-if(flag):
-    batch_size = b2
-    mini_batch_size = mb2
+if(laptop):
+    batch_size = 100
+    mini_batch_size = 10
 
 red_batch_size = batch_size
 red_minibatch_size = mini_batch_size
