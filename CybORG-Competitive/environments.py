@@ -20,7 +20,7 @@ from statistics import mean
 # Flag for setting certain parameters
 # Set to TRUE   when running on laptop; mainly for testing setup of code
 # Set to FALSE  when running on JupyterHub
-laptop = True
+laptop = False
 
 # Updated Hyper-parameters
 timesteps = 30
@@ -111,7 +111,7 @@ red_action_sequence = 3
 
 # Number of 'timesteps' red gets to take actions to try and achieve the specific action sequence
 red_action_tries = pow(len(red_action_list),red_action_sequence)
-red_multiplier = 9
+red_multiplier = 5
 
 b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
 mb_scaler = 16
