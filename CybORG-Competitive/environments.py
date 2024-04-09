@@ -641,7 +641,7 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
         # "sgd_minibatch_size": blue_minibatch_size,
         # location:     (impala.py) - SPECIFIC
         # (u) over:     yes; matches author
-        "minibatch_buffer_size": blue_minibatch_size
+        "minibatch_buffer_size": blue_minibatch_size,
 
         # GOOD
         # location:     (impala.py, ppo.py) algorithm_config.py
@@ -746,8 +746,8 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
         "num_multi_gpu_tower_stacks": 1,
 
         # Ignore experience replay for now
-        # "replay_proportion": 0.5,
-        # "replay_buffer_num_slots": blue_batch_size,
+        "replay_proportion": 0.5,
+        "replay_buffer_num_slots": blue_batch_size,
         "learner_queue_size": blue_batch_size,
 
         # Units in seconds
@@ -974,4 +974,3 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
         print(f'Low Score is {min_score}')
     
     return(avg_score)
-
