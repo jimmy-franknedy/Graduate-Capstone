@@ -26,7 +26,7 @@ laptop = True
 timesteps = 30
 
 # Set the number of workers, and numGPUs given the flag
-w = 40
+w = 32
 ngpus = 1
 if(laptop):
     w = 4
