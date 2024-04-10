@@ -20,7 +20,7 @@ from statistics import mean
 # Flag for setting certain parameters
 # Set to TRUE   when running on laptop; mainly for testing setup of code
 # Set to FALSE  when running on JupyterHub
-laptop = False
+laptop = True
 
 # Updated Hyper-parameters
 timesteps = 30
@@ -859,3 +859,5 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
     
     return(avg_score)
 
+def get_timesteps():
+    return timesteps   
