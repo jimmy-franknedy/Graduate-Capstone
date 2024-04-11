@@ -25,7 +25,7 @@ laptop = True
 # Timesteps per game
 timesteps = 30
 
-# Red agent's training algorithm
+# Agent's training algorithm
 algorithm = "ppo"
 # algorithm = "impala"
 
@@ -124,6 +124,11 @@ mb2 = b2 // 16                                  # ^
 batch_size = b2
 mini_batch_size = mb2
 
+# Smaller batch sizes for IMPALA (ratio 1:2 Impala: PPO)
+if(algorithm == "impala"):
+    batch_size //= 2
+    mini_batch_size //= 2
+
 if(laptop):
     batch_size = 100
     mini_batch_size = 10
@@ -195,10 +200,78 @@ red_ppo_config = {
     'disable_env_checking': True,}
 
 # Blu IMP Config
-blue_impala_config = {}
+blue_impala_config = {
+    "env": "blue_trainer",
+    "num_gpus": ngpus,
+    "num_workers": workers,
+    "train_batch_size": blue_batch_size,
+    "minibatch_buffer_size": blue_minibatch_size,
+    "rollout_fragment_length": int(blue_batch_size/workers),
+    "num_sgd_iter": epochs,
+    "batch_mode": "truncate_episodes",
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "lr": blue_lr,
+    "entropy_coeff": blue_entropy,
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    "recreate_failed_workers": True,
+    "clip_rewards": False,
+    "vf_loss_coeff": 0.01,
+    "log_sys_usage": False,
+    "disable_env_checking": True,
+
+    #########################################
+    # Specific Impala Set Parameters        #
+    # from impala.py                        #
+    # starts at "IMPALA specific settings"  #
+    #########################################
+
+    "num_multi_gpu_tower_stacks": 1,
+
+    # Experience Replay
+    "replay_proportion": 0.5,
+    "replay_buffer_num_slots": blue_batch_size,
+
+    "learner_queue_size": blue_batch_size,
+    "learner_queue_timeout": 120,
+}
 
 # Red IMP Config
-red_impala_config = {}
+red_impala_config = {
+    "env": "red_trainer",
+    "num_gpus": ngpus,
+    "num_workers": workers,
+    "train_batch_size": red_batch_size,
+    "minibatch_buffer_size": red_minibatch_size,
+    "rollout_fragment_length": int(red_batch_size/workers),
+    "num_sgd_iter": epochs,
+    "batch_mode": "truncate_episodes",
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "lr": red_lr,
+    "entropy_coeff": red_entropy,
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    "recreate_failed_workers": True,
+    "clip_rewards": False,
+    "vf_loss_coeff": 0.01,
+    "log_sys_usage": False,
+    "disable_env_checking": True,
+
+    #########################################
+    # Specific Impala Set Parameters        #
+    # from impala.py                        #
+    # starts at "IMPALA specific settings"  #
+    #########################################
+
+    "num_multi_gpu_tower_stacks": 1,
+
+    # Experience Replay
+    "replay_proportion": 0.5,
+    "replay_buffer_num_slots": red_batch_size,
+
+    "learner_queue_size": red_batch_size,
+    "learner_queue_timeout": 120,
+}
 
 class BlueTrainer(gym.Env):
     def __init__(self, env_config):
