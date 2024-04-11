@@ -4,7 +4,7 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
-#  IMPALA
+# IMPALA
 from ray.rllib.algorithms.impala import Impala, ImpalaConfig
 
 # PPO
@@ -22,20 +22,24 @@ from statistics import mean
 # Set to FALSE  when running on JupyterHub
 laptop = True
 
-# Updated Hyper-parameters
+# Timesteps per game
 timesteps = 30
 
-# Set the number of workers, and numGPUs given the flag
-w = 32
+# Red agent's training algorithm
+algorithm = "ppo"
+# algorithm = "impala"
+
+# Set the number of workers, and numGPUs given the laptop flag
+workers = 32
 ngpus = 1
 if(laptop):
-    w = 4
+    workers = 4
     ngpus = 0
 
 # Training parameters
 gae = 1
 gamma = 0.99
-epochs = 30         # epoch value
+epochs = 30         
 mixer = 0.9         # for training opponent best-response, how many games with current agent policy instead of agent pool
 
 red_lr = 5e-4
@@ -128,10 +132,73 @@ red_batch_size = batch_size
 red_minibatch_size = mini_batch_size
 blue_batch_size = batch_size
 blue_minibatch_size = mini_batch_size
-# print(batch_size,mini_batch_size)
 
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
+
+# Declare algorithm configurations after hyperparameters are calculated
+
+# Blu PPO Config
+blue_ppo_config = {
+    "env": "blue_trainer",
+    "num_gpus": ngpus,
+    "num_workers": workers,
+    "train_batch_size": blue_batch_size,
+    "sgd_minibatch_size": blue_minibatch_size,
+    'rollout_fragment_length': int(blue_batch_size/workers),
+    'num_sgd_iter': epochs,
+    'batch_mode': "truncate_episodes",
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+    "lr": blue_lr,
+    "entropy_coeff": blue_entropy,
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    "recreate_failed_workers": True,
+    'vf_share_layers': False,
+    'lambda': gae,
+    'gamma': gamma,
+    'kl_coeff': blue_kl,
+    'kl_target': 0.01,
+    'clip_rewards': False,
+    'clip_param': blue_clip_param,
+    'vf_clip_param': 50.0,
+    'vf_loss_coeff': 0.01,
+    'log_sys_usage': False,
+    'disable_env_checking': True,}
+
+# Red PPO Config
+red_ppo_config = {
+    "env": "RedTrainer",
+    "num_gpus":  ngpus,
+    "num_workers": workers,
+    "train_batch_size": red_batch_size,
+    "sgd_minibatch_size": red_minibatch_size,
+    'rollout_fragment_length': int(red_batch_size/workers),
+    'num_sgd_iter': epochs,
+    'batch_mode': "truncate_episodes",
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+    "lr": red_lr,
+    "entropy_coeff": red_entropy,
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    "recreate_failed_workers": True,
+    'vf_share_layers': False,
+    'lambda': gae,
+    'gamma': gamma,
+    'kl_coeff': red_kl,
+    'kl_target': 0.01,
+    'clip_rewards': False,
+    'clip_param': red_clip_param,
+    'vf_clip_param': 50.0,
+    'vf_loss_coeff': 0.01,
+    'log_sys_usage': False,
+    'disable_env_checking': True,}
+
+# Blu IMP Config
+blue_impala_config = {}
+
+# Red IMP Config
+red_impala_config = {}
 
 class BlueTrainer(gym.Env):
     def __init__(self, env_config):
@@ -165,7 +232,7 @@ class BlueTrainer(gym.Env):
     def reset(self):
 
         # This is how we are selecting the opposing policy from the opponent pool: Uniform Sampling
-        pool_file = open("./policies/red_opponent_pool/pool_size", "r")
+        pool_file = open(f"./policies/{algorithm}/{timesteps}/red_opponent_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
 
@@ -174,7 +241,7 @@ class BlueTrainer(gym.Env):
         else:
             self.opponent_id = 0
         
-        path_file = open(f"./policies/red_opponent_pool/opponent_red_{self.opponent_id}/checkpoint_path", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/red_opponent_pool/opponent_red_{self.opponent_id}/checkpoint_path", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.red_opponent.restore(checkpoint_path)
@@ -218,6 +285,7 @@ class BlueTrainer(gym.Env):
         return (obs, reward, done, info)
     
 class BlueOpponent(gym.Env):
+
     def __init__(self, env_config):
 
         # agent name, for saving and loading
@@ -249,7 +317,7 @@ class BlueOpponent(gym.Env):
     def reset(self):
 
         # This is how we are choosing and opposing policy from the opponent pool: Uniform Sampling
-        pool_file = open("./policies/red_competitive_pool/pool_size", "r")
+        pool_file = open(f"./policies/{algorithm}/{timesteps}/red_competitive_pool/pool_size", "r")
         red_pool_size = int(pool_file.read())
         pool_file.close()
 
@@ -258,7 +326,7 @@ class BlueOpponent(gym.Env):
         else:
             self.opponent_id = red_pool_size
         
-        path_file = open(f"./policies/red_competitive_pool/competitive_red_{self.opponent_id}/checkpoint_path", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/red_competitive_pool/competitive_red_{self.opponent_id}/checkpoint_path", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.red_opponent.restore(checkpoint_path)
@@ -331,7 +399,7 @@ class DedicatedBlueEnv(gym.Env):
         
     def reset(self):
 
-        path_file = open(f"./policies/competitive_red_policy", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/competitive_red_policy", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.red_opponent.restore(checkpoint_path)
@@ -404,7 +472,7 @@ class RedTrainer(gym.Env):
 
     def reset(self):
 
-        pool_file = open("./policies/blue_opponent_pool/pool_size", "r")
+        pool_file = open(f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/pool_size", "r")
         blue_pool_size = int(pool_file.read())
         pool_file.close()
 
@@ -413,7 +481,7 @@ class RedTrainer(gym.Env):
         else:
             self.opponent_id = blue_pool_size
         
-        path_file = open(f"./policies/blue_opponent_pool/opponent_blue_{self.opponent_id}/checkpoint_path", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/opponent_blue_{self.opponent_id}/checkpoint_path", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.blue_opponent.restore(checkpoint_path)
@@ -476,7 +544,7 @@ class RedOpponent(gym.Env):
 
     def reset(self):
 
-        pool_file = open("./policies/blue_competitive_pool/pool_size", "r")
+        pool_file = open(f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/pool_size", "r")
         blue_pool_size = int(pool_file.read())
         pool_file.close()
 
@@ -485,7 +553,7 @@ class RedOpponent(gym.Env):
         else:
             self.opponent_id = blue_pool_size
         
-        path_file = open(f"./policies/blue_competitive_pool/competitive_blue_{self.opponent_id}/checkpoint_path", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/competitive_blue_{self.opponent_id}/checkpoint_path", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.blue_opponent.restore(checkpoint_path)
@@ -547,7 +615,7 @@ class DedicatedRedEnv(gym.Env):
 
     def reset(self):
 
-        path_file = open(f"./policies/competitive_blue_policy", "r")
+        path_file = open(f"./policies/{algorithm}/{timesteps}/competitive_blue_policy", "r")
         checkpoint_path = path_file.read()
         path_file.close()
         self.blue_opponent.restore(checkpoint_path)
@@ -581,7 +649,7 @@ class DedicatedRedEnv(gym.Env):
 
         return (obs, reward, done, info)
 
-def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
+def build_blue_agent(fresh, opponent=False, dedicated=False):
 
     # register the custom environment
     if dedicated:
@@ -610,70 +678,44 @@ def build_blue_agent(opponent=False, dedicated=False, workers=w, fresh=True):
         )
 
     # set the RLLib configuration
-    blue_config = {
-        "env": "blue_trainer",
-        "num_gpus": ngpus,
-        "num_workers": workers,
-        "train_batch_size": blue_batch_size,
-        "sgd_minibatch_size": blue_minibatch_size,
-        'rollout_fragment_length': int(blue_batch_size/workers),
-        'num_sgd_iter': epochs,
-        'batch_mode': "truncate_episodes",
-        "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
-        "lr": blue_lr,
-        "entropy_coeff": blue_entropy,
-        "observation_space": MultiBinary(blue_obs_space),
-        "action_space": Discrete(len(blue_action_list)),
-        "recreate_failed_workers": True,
-        'vf_share_layers': False,
-        'lambda': gae,
-        'gamma': gamma,
-        'kl_coeff': blue_kl,
-        'kl_target': 0.01,
-        'clip_rewards': False,
-        'clip_param': blue_clip_param,
-        'vf_clip_param': 50.0,
-        'vf_loss_coeff': 0.01,
-        'log_sys_usage': False,
-        'disable_env_checking': True,
-    }
+    blue_config = get_algorithm_config(algorithm,True)
 
     if dedicated:
-        blue_agent = PPO(config=blue_config, env=DedicatedBlueEnv)
+        blue_agent = run_algorithm(config=blue_config, env=DedicatedBlueEnv,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/blue_dedicated_pool/dedicated_blue_0")
+            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_dedicated_pool/dedicated_blue_0")
             print(checkpoint_path)
-            path_file = open(f"./policies/blue_dedicated_pool/dedicated_blue_0/checkpoint_path", "w")
+            path_file = open(f"./policies/blue_dedicated_pool/{algorithm}/{timesteps}/dedicated_blue_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
-            path_file = open("./policies/blue_dedicated_pool/pool_size", "w")
+            path_file = open(f"./policies/blue_dedicated_pool/{algorithm}/{timesteps}/pool_size", "w")
             path_file.write("0")
             path_file.close()
     elif opponent:
-        blue_agent = PPO(config=blue_config, env=BlueOpponent)
+        blue_agent = run_algorithm(config=blue_config, env=BlueOpponent,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/blue_opponent_pool/opponent_blue_0")
+            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/opponent_blue_0")
             print(checkpoint_path)
-            path_file = open(f"./policies/blue_opponent_pool/opponent_blue_0/checkpoint_path", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/opponent_blue_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
-            path_file = open("./policies/blue_opponent_pool/pool_size", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/pool_size", "w")
             path_file.write("0")
             path_file.close()
     else:
-        blue_agent = PPO(config=blue_config, env=BlueTrainer)
+        blue_agent = run_algorithm(config=blue_config, env=BlueTrainer,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/blue_competitive_pool/competitive_blue_0")
+            checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/competitive_blue_0")
             print(checkpoint_path)
-            path_file = open(f"./policies/blue_competitive_pool/competitive_blue_0/checkpoint_path", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/competitive_blue_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
-            path_file = open("./policies/blue_competitive_pool/pool_size", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/pool_size", "w")
             path_file.write("0")
             path_file.close() 
     return blue_agent
 
-def build_red_agent(opponent=False, dedicated=False, workers=w, fresh=True):
+def build_red_agent(fresh, opponent=False, dedicated=False):
     # register the custom environment
     if dedicated:
         select_env = "DedicatedRedEnv"
@@ -701,65 +743,39 @@ def build_red_agent(opponent=False, dedicated=False, workers=w, fresh=True):
         )
 
     # set the RLLib configuration
-    red_config = {
-        "env": "RedTrainer",
-        "num_gpus":  ngpus,
-        "num_workers": workers,
-        "train_batch_size": red_batch_size,
-        "sgd_minibatch_size": red_minibatch_size,
-        'rollout_fragment_length': int(red_batch_size/workers),
-        'num_sgd_iter': epochs,
-        'batch_mode': "truncate_episodes",
-        "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
-        "lr": red_lr,
-        "entropy_coeff": red_entropy,
-        "observation_space": MultiBinary(red_obs_space),
-        "action_space": Discrete(len(red_action_list)),
-        "recreate_failed_workers": True,
-        'vf_share_layers': False,
-        'lambda': gae,
-        'gamma': gamma,
-        'kl_coeff': red_kl,
-        'kl_target': 0.01,
-        'clip_rewards': False,
-        'clip_param': red_clip_param,
-        'vf_clip_param': 50.0,
-        'vf_loss_coeff': 0.01,
-        'log_sys_usage': False,
-        'disable_env_checking': True,
-    }
+    red_config = get_algorithm_config(algorithm,False)
 
     if dedicated:
-        red_agent = PPO(config=red_config, env=DedicatedRedEnv)
+        red_agent = run_algorithm(config=red_config, env=DedicatedRedEnv,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/red_dedicated_pool/dedicated_red_0")
-            path_file = open(f"./policies/red_dedicated_pool/dedicated_red_0/checkpoint_path", "w")
+            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/dedicated_red_0")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/dedicated_red_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
             print(checkpoint_path)
-            path_file = open("./policies/red_dedicated_pool/pool_size", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/pool_size", "w")
             path_file.write("0")
             path_file.close()
     elif opponent:
-        red_agent = PPO(config=red_config, env=RedOpponent)
+        red_agent = run_algorithm(config=red_config, env=RedOpponent,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/red_opponent_pool/opponent_red_0")
-            path_file = open(f"./policies/red_opponent_pool/opponent_red_0/checkpoint_path", "w")
+            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/red_opponent_pool/opponent_red_0")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_opponent_pool/opponent_red_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
             print(checkpoint_path)
-            path_file = open("./policies/red_opponent_pool/pool_size", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_opponent_pool/pool_size", "w")
             path_file.write("0")
             path_file.close()
     else:
-        red_agent = PPO(config=red_config, env=RedTrainer)
+        red_agent = run_algorithm(config=red_config, env=RedTrainer,algorithm_select=algorithm)
         if fresh:
-            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/red_competitive_pool/competitive_red_0")
-            path_file = open(f"./policies/red_competitive_pool/competitive_red_0/checkpoint_path", "w")
+            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/red_competitive_pool/competitive_red_0")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_competitive_pool/competitive_red_0/checkpoint_path", "w")
             path_file.write(checkpoint_path)
             path_file.close()
             print(checkpoint_path)
-            path_file = open("./policies/red_competitive_pool/pool_size", "w")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_competitive_pool/pool_size", "w")
             path_file.write("0")
             path_file.close()     
     return red_agent
@@ -859,5 +875,35 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
     
     return(avg_score)
 
+def run_algorithm(config, env, algorithm_select):
+    if(algorithm_select == "ppo"):
+        return PPO(config=config, env=env)
+
+    elif(algorithm_select == "impala"):
+        return Impala(config=config, env=env)
+    else:
+        raise ValueError("Selected algorithm not implemented!")
+
+def get_algorithm_config(algorithm_select, blue):
+    if(algorithm_select == "ppo"):
+        if(blue):
+            print("selecting blue ppo config")
+            return blue_ppo_config
+        else:
+            print("selecting red ppo config")
+            return red_ppo_config
+    elif(algorithm_select == "impala"):
+        if(blue):
+            print("selecting blue impala config")
+            return blue_impala_config
+        else:
+            print("selecting red impala config")
+            return red_impala_config
+    else:
+        raise ValueError("Selected algorithm config not implemented!")
+
 def get_timesteps():
-    return timesteps   
+    return timesteps
+
+def get_algorithm_select():
+    return algorithm

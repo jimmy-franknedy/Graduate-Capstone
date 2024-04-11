@@ -112,8 +112,8 @@ class CompetitiveWrapper(BaseWrapper):
         # print(cyborg_space)
 
         # Check how many sessions Blue has?
-        print("Blu sessions")
-        print(list(cyborg_space["session"]))
+        # print("Blu sessions")
+        # print(list(cyborg_space["session"]))
 
         # This is the part where the author only selects one session! I think we have a total of 13 sessions, but 11 usable sessions for both agents
         session = list(cyborg_space["session"].keys())[0]
@@ -156,8 +156,8 @@ class CompetitiveWrapper(BaseWrapper):
         # print("Red Agent Action Space",cyborg_space)
 
         # Print how many sessions red may have?
-        print("Red sessions")
-        print(list(cyborg_space["session"]))
+        # print("Red sessions")
+        # print(list(cyborg_space["session"]))
 
         session = list(cyborg_space["session"].keys())[0]
 
