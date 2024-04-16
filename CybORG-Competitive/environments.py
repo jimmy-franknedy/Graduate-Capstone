@@ -4,12 +4,18 @@ from wrapper import CompetitiveWrapper
 import gym
 from gym.spaces import Discrete, MultiBinary
 
-# IMPALA
-from ray.rllib.algorithms.impala import Impala, ImpalaConfig
-
 # PPO
 from ray.rllib.algorithms.ppo import PPO, PPOConfig
 from ray.tune.registry import register_env
+
+# APPO
+from ray.rllib.algorithms.appo import APPO, APPOConfig
+
+# IMPALA
+from ray.rllib.algorithms.impala import Impala, ImpalaConfig
+
+# DQN
+from ray.rllib.algorithms.dqn import DQN, DQNConfig
 
 import numpy as np
 from itertools import product
@@ -26,11 +32,12 @@ laptop = True
 timesteps = 30
 
 # Agent's training algorithm
-algorithm = "ppo"
-# algorithm = "impala"
+# algorithm = "ppo"
+algorithm = "impala"
+# algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
-workers = 32
+workers = 40
 ngpus = 1
 if(laptop):
     workers = 4
@@ -124,11 +131,6 @@ mb2 = b2 // 16                                  # ^
 batch_size = b2
 mini_batch_size = mb2
 
-# Smaller batch sizes for IMPALA (ratio 1:2 Impala: PPO)
-if(algorithm == "impala"):
-    batch_size //= 2
-    mini_batch_size //= 2
-
 if(laptop):
     batch_size = 100
     mini_batch_size = 10
@@ -199,6 +201,24 @@ red_ppo_config = {
     'log_sys_usage': False,
     'disable_env_checking': True,}
 
+# Blu Opp PPO Config
+blu_is_opponent_ppo_config = {
+    "num_workers": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    'vf_share_layers': False,
+    'log_sys_usage': False,}
+
+# Red Opp PPO Config
+red_is_opponent_ppo_config = {
+    "num_workers": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers":False},
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    'vf_share_layers': False,
+    'log_sys_usage': False,}
+
 # Blu IMP Config
 blue_impala_config = {
     "env": "blue_trainer",
@@ -227,14 +247,15 @@ blue_impala_config = {
     #########################################
 
     "num_multi_gpu_tower_stacks": 1,
+    "vtrace": True,
+    "vtrace_drop_last_ts": False,
+
 
     # Experience Replay
-    "replay_proportion": 0.5,
-    "replay_buffer_num_slots": blue_batch_size,
+    # "replay_proportion": 0.5,
+    # "replay_buffer_num_slots": blue_batch_size,
 
-    "learner_queue_size": blue_batch_size,
-    "learner_queue_timeout": 120,
-}
+    "learner_queue_size": workers,}
 
 # Red IMP Config
 red_impala_config = {
@@ -242,7 +263,7 @@ red_impala_config = {
     "num_gpus": ngpus,
     "num_workers": workers,
     "train_batch_size": red_batch_size,
-    "minibatch_buffer_size": red_minibatch_size,
+    "minibatch_buffer_size": 1,
     "rollout_fragment_length": int(red_batch_size/workers),
     "num_sgd_iter": epochs,
     "batch_mode": "truncate_episodes",
@@ -264,14 +285,71 @@ red_impala_config = {
     #########################################
 
     "num_multi_gpu_tower_stacks": 1,
+    "vtrace": True,
+    "vtrace_drop_last_ts": False,
+
 
     # Experience Replay
-    "replay_proportion": 0.5,
-    "replay_buffer_num_slots": red_batch_size,
+    # "replay_proportion": 0.5,
+    # "replay_buffer_num_slots": red_batch_size,
 
-    "learner_queue_size": red_batch_size,
-    "learner_queue_timeout": 120,
-}
+    "learner_queue_size": workers,}
+
+# Blu Opp IMP Config
+blu_is_opponent_impala_config = {
+    "num_workers": 0,
+    "num_gpus": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    "log_sys_usage": False,}
+
+# Red Opp IMP Config
+red_is_opponent_impala_config = {
+    "num_workers": 0,
+    "num_gpus": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    "log_sys_usage": False,}
+
+# Blue DQN Config
+blue_dqn_config = {
+    "env": "blue_trainer",
+    "num_gpus": ngpus,
+    "num_workers": workers,
+    "train_batch_size": blue_minibatch_size,
+    "rollout_fragment_length": int(blue_batch_size/workers),
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    "recreate_failed_workers": True,
+    "clip_rewards": False,
+    "log_sys_usage": False,
+    "disable_env_checking": True,}
+
+# Red DQN Config
+red_dqn_config = {
+    "env": "red_trainer",
+    "num_gpus": ngpus,
+    "num_workers": workers,
+    "train_batch_size": red_minibatch_size,
+    "rollout_fragment_length": int(red_batch_size/workers),
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    "recreate_failed_workers": True,
+    "clip_rewards": False,
+    "log_sys_usage": False,
+    "disable_env_checking": True,}
+
+# Opp DQN Config
+opponent_dqn_config = {
+    "num_workers": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(red_obs_space),
+    "action_space": Discrete(len(red_action_list)),
+    'log_sys_usage': False,}
 
 class BlueTrainer(gym.Env):
     def __init__(self, env_config):
@@ -292,14 +370,7 @@ class BlueTrainer(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # Red config for opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(red_obs_space)
-        config["action_space"] = Discrete(len(red_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.red_opponent = PPO(config=config)
+        self.red_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),False))
         self.opponent_id = 0
         
     def reset(self):
@@ -361,6 +432,8 @@ class BlueOpponent(gym.Env):
 
     def __init__(self, env_config):
 
+        print("Creating blue opponent")
+
         # agent name, for saving and loading
         self.name = "blue_env"
 
@@ -377,14 +450,7 @@ class BlueOpponent(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # Red config for opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(red_obs_space)
-        config["action_space"] = Discrete(len(red_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.red_opponent = PPO(config=config)
+        self.red_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),False))
         self.opponent_id = 0
         
     def reset(self):
@@ -461,14 +527,7 @@ class DedicatedBlueEnv(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # Red config for opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(red_obs_space)
-        config["action_space"] = Discrete(len(red_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.red_opponent = PPO(config=config)
+        self.red_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),False))
         
     def reset(self):
 
@@ -518,6 +577,9 @@ class DedicatedBlueEnv(gym.Env):
     
 class RedTrainer(gym.Env):
     def __init__(self, env_config):
+
+        print("Creating red trainer")
+        
         self.name = "red_env"
 
         # max timesteps per episode
@@ -533,14 +595,7 @@ class RedTrainer(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # copy of a config for the Blue opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(blue_obs_space)
-        config["action_space"] = Discrete(len(blue_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.blue_opponent = PPO(config=config)
+        self.blue_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),True))
         self.opponent_id = 0
 
     def reset(self):
@@ -605,14 +660,7 @@ class RedOpponent(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # copy of a config for the Blue opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(blue_obs_space)
-        config["action_space"] = Discrete(len(blue_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.blue_opponent = PPO(config=config)
+        self.blue_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),True))
         self.opponent_id = 0
 
     def reset(self):
@@ -677,14 +725,7 @@ class DedicatedRedEnv(gym.Env):
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # copy of a config for the Blue opponent
-        config = {}
-        config["num_workers"] = 0
-        config["model"] = {"fcnet_hiddens": model_arch, "fcnet_activation": act_func, "vf_share_layers": False}
-        config["observation_space"] = MultiBinary(blue_obs_space)
-        config["action_space"] = Discrete(len(blue_action_list))
-        config['vf_share_layers'] = False
-        config['log_sys_usage'] = False
-        self.blue_opponent = PPO(config=config)
+        self.blue_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),True))
 
     def reset(self):
 
@@ -754,7 +795,7 @@ def build_blue_agent(fresh, opponent=False, dedicated=False):
     blue_config = get_algorithm_config(algorithm,True)
 
     if dedicated:
-        blue_agent = run_algorithm(config=blue_config, env=DedicatedBlueEnv,algorithm_select=algorithm)
+        blue_agent = run_algorithm(config=blue_config, env=DedicatedBlueEnv, algorithm_select=algorithm)
         if fresh:
             checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_dedicated_pool/dedicated_blue_0")
             print(checkpoint_path)
@@ -765,7 +806,7 @@ def build_blue_agent(fresh, opponent=False, dedicated=False):
             path_file.write("0")
             path_file.close()
     elif opponent:
-        blue_agent = run_algorithm(config=blue_config, env=BlueOpponent,algorithm_select=algorithm)
+        blue_agent = run_algorithm(config=blue_config, env=BlueOpponent, algorithm_select=algorithm)
         if fresh:
             checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_opponent_pool/opponent_blue_0")
             print(checkpoint_path)
@@ -776,7 +817,7 @@ def build_blue_agent(fresh, opponent=False, dedicated=False):
             path_file.write("0")
             path_file.close()
     else:
-        blue_agent = run_algorithm(config=blue_config, env=BlueTrainer,algorithm_select=algorithm)
+        blue_agent = run_algorithm(config=blue_config, env=BlueTrainer, algorithm_select=algorithm)
         if fresh:
             checkpoint_path = blue_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/blue_competitive_pool/competitive_blue_0")
             print(checkpoint_path)
@@ -954,6 +995,10 @@ def run_algorithm(config, env, algorithm_select):
 
     elif(algorithm_select == "impala"):
         return Impala(config=config, env=env)
+
+    elif(algorithm_select == "dqn"):
+        return DQN(config=config, env=env)
+
     else:
         raise ValueError("Selected algorithm not implemented!")
 
@@ -972,6 +1017,43 @@ def get_algorithm_config(algorithm_select, blue):
         else:
             print("selecting red impala config")
             return red_impala_config
+    elif(algorithm_select == "dqn"):
+        if(blue):
+            print("selecting blue dqn config")
+            return blue_dqn_config
+        else:
+            print("selecting red dqn config")
+            return red_dqn_config
+    else:
+        raise ValueError("Selected algorithm config not implemented!")
+
+def get_opponent_config(algorithm_select, blue):
+    print("go here")
+    if(algorithm_select == "ppo"):
+        if(blue):
+            return blu_is_opponent_ppo_config
+        return red_is_opponent_ppo_config
+    elif(algorithm_select == "impala"):
+        if(blue):
+            print("setting blue opponent to impala config")
+            return blu_is_opponent_impala_config
+        print("setting red opponent to impala config")
+        return red_is_opponent_impala_config
+    elif(algorithm_select == "dqn"):
+        return opponent_dqn_config 
+    else:
+        raise ValueError("Selected algorithm config not implemented!")
+
+def get_opponent(algorithm_select, config):
+    if(algorithm_select == "ppo"):
+        print("opponent is selecting ppo")
+        return PPO(config=config)
+    elif(algorithm_select == "impala"):
+        print("opponent is selecting impala")
+        return Impala(config=config)
+    elif(algorithm_select == "dqn"):
+        print("opponent is selecting dqn")
+        return DQN(config=config)
     else:
         raise ValueError("Selected algorithm config not implemented!")
 
