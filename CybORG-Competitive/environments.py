@@ -33,8 +33,8 @@ timesteps = 30
 
 # Agent's training algorithm
 # algorithm = "ppo"
-algorithm = "impala"
-# algorithm = "dqn"
+# algorithm = "impala"
+algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
 workers = 40
@@ -343,8 +343,16 @@ red_dqn_config = {
     "log_sys_usage": False,
     "disable_env_checking": True,}
 
-# Opp DQN Config
-opponent_dqn_config = {
+# Blu Opp DQN Config
+blue_is_opponent_dqn_config = {
+    "num_workers": 0,
+    "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
+    "observation_space": MultiBinary(blue_obs_space),
+    "action_space": Discrete(len(blue_action_list)),
+    'log_sys_usage': False,}
+
+# Red Opp DQN Config
+red_is_opponent_dqn_config = {
     "num_workers": 0,
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(red_obs_space),
@@ -998,7 +1006,6 @@ def run_algorithm(config, env, algorithm_select):
 
     elif(algorithm_select == "dqn"):
         return DQN(config=config, env=env)
-
     else:
         raise ValueError("Selected algorithm not implemented!")
 
@@ -1040,7 +1047,9 @@ def get_opponent_config(algorithm_select, blue):
         print("setting red opponent to impala config")
         return red_is_opponent_impala_config
     elif(algorithm_select == "dqn"):
-        return opponent_dqn_config 
+        if(blue):
+            return blue_is_opponent_dqn_config
+        return red_is_opponent_dqn_config 
     else:
         raise ValueError("Selected algorithm config not implemented!")
 
