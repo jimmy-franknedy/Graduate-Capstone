@@ -33,8 +33,8 @@ timesteps = 30
 
 # Agent's training algorithm
 # algorithm = "ppo"
-# algorithm = "impala"
-algorithm = "dqn"
+algorithm = "impala"
+# algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
 workers = 40
@@ -130,6 +130,10 @@ mb2 = b2 // 16                                  # ^
 
 batch_size = b2
 mini_batch_size = mb2
+
+print("batch_size: ", batch_size)
+print("mini_batch_size: ", mini_batch_size)
+print("rollout_fragment_length: ",int(batch_size/workers))
 
 if(laptop):
     batch_size = 100
@@ -263,7 +267,7 @@ red_impala_config = {
     "num_gpus": ngpus,
     "num_workers": workers,
     "train_batch_size": red_batch_size,
-    "minibatch_buffer_size": 1,
+    "minibatch_buffer_size": red_minibatch_size,
     "rollout_fragment_length": int(red_batch_size/workers),
     "num_sgd_iter": epochs,
     "batch_mode": "truncate_episodes",
@@ -288,7 +292,6 @@ red_impala_config = {
     "vtrace": True,
     "vtrace_drop_last_ts": False,
 
-
     # Experience Replay
     # "replay_proportion": 0.5,
     # "replay_buffer_num_slots": red_batch_size,
@@ -302,7 +305,13 @@ blu_is_opponent_impala_config = {
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(blue_obs_space),
     "action_space": Discrete(len(blue_action_list)),
-    "log_sys_usage": False,}
+    "log_sys_usage": False,
+
+    # Added
+    "train_batch_size": blue_batch_size,
+    "minibatch_buffer_size": blue_minibatch_size,
+    "rollout_fragment_length": int(blue_batch_size/workers),
+}
 
 # Red Opp IMP Config
 red_is_opponent_impala_config = {
@@ -311,14 +320,19 @@ red_is_opponent_impala_config = {
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(red_obs_space),
     "action_space": Discrete(len(red_action_list)),
-    "log_sys_usage": False,}
+    "log_sys_usage": False,
+
+    "train_batch_size": red_batch_size,
+    "minibatch_buffer_size": red_minibatch_size,
+    "rollout_fragment_length": int(red_batch_size/workers),
+}
 
 # Blue DQN Config
 blue_dqn_config = {
     "env": "blue_trainer",
     "num_gpus": ngpus,
     "num_workers": workers,
-    "train_batch_size": blue_minibatch_size,
+    "train_batch_size": blue_batch_size,
     "rollout_fragment_length": int(blue_batch_size/workers),
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(blue_obs_space),
@@ -326,14 +340,21 @@ blue_dqn_config = {
     "recreate_failed_workers": True,
     "clip_rewards": False,
     "log_sys_usage": False,
-    "disable_env_checking": True,}
+    "disable_env_checking": True,
+
+    # Rainbow implementation
+    # "n_step": 2,
+    # "noisy": True,
+    # "num_atoms": 2,
+    "v_min": -100.0,
+    "v_max": 100.0,}
 
 # Red DQN Config
 red_dqn_config = {
     "env": "red_trainer",
     "num_gpus": ngpus,
     "num_workers": workers,
-    "train_batch_size": red_minibatch_size,
+    "train_batch_size": red_batch_size,
     "rollout_fragment_length": int(red_batch_size/workers),
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(red_obs_space),
@@ -341,7 +362,14 @@ red_dqn_config = {
     "recreate_failed_workers": True,
     "clip_rewards": False,
     "log_sys_usage": False,
-    "disable_env_checking": True,}
+    "disable_env_checking": True,
+
+    # Rainbow implementation
+    # "n_step": 2,
+    # "noisy": True,
+    # "num_atoms": 2,
+    "v_min": -100.0,
+    "v_max": 100.0,}
 
 # Blu Opp DQN Config
 blue_is_opponent_dqn_config = {
@@ -1042,9 +1070,7 @@ def get_opponent_config(algorithm_select, blue):
         return red_is_opponent_ppo_config
     elif(algorithm_select == "impala"):
         if(blue):
-            print("setting blue opponent to impala config")
             return blu_is_opponent_impala_config
-        print("setting red opponent to impala config")
         return red_is_opponent_impala_config
     elif(algorithm_select == "dqn"):
         if(blue):
