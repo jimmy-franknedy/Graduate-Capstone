@@ -101,6 +101,10 @@ class CompetitiveWrapper(BaseWrapper):
 
         self.turns_per_game = turns
         self.turn = 0
+
+        # Added for cardiff implementation
+        self.cardiff_action_list = [133, 134, 135, 139, 3, 4, 5, 9, 16, 17, 18, 22, 11, 12, 13, 14, 141, 142, 143, 144,
+                                    132, 2, 15, 24, 25, 26, 27]
     
     # convert the discrete action choice into its corresponding CybORG action
     def resolve_blue_action(self, action):

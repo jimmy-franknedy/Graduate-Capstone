@@ -1,3 +1,7 @@
+# Import the Cardiff Agent's Directory
+from cardiff import *
+from cardiff.cage2.Agents import MainAgent
+
 from CybORG import CybORG
 from wrapper import CompetitiveWrapper
 
@@ -32,8 +36,8 @@ laptop = True
 timesteps = 30
 
 # Agent's training algorithm
-# algorithm = "ppo"
-algorithm = "impala"
+algorithm = "ppo"
+# algorithm = "impala"
 # algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
@@ -78,8 +82,7 @@ hostnames = (
     "User1",
     "User2",
     "User3",
-    "User4",
-)
+    "User4",)
 blue_lone_actions = [["Monitor"]]  # actions with no parameters
 blue_host_actions = (
     "Analyse",
@@ -92,26 +95,28 @@ blue_host_actions = (
     "DecoySSHD", 
     "DecoySvchost", 
     "DecoyTomcat", 
-    "DecoyVsftpd",
-)  # actions with a hostname parameter
+    "DecoyVsftpd",)  # actions with a hostname parameter
+
 
 red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
 red_network_actions = [
-    "DiscoverSystems"
-]  # actions with a subnet as the parameter
+    "DiscoverSystems"]  # actions with a subnet as the parameter
 red_host_actions = (
     "DiscoverServices",
     "ExploitServices",
-    "PrivilegeEscalate",
-)
+    "PrivilegeEscalate",)
+
 blue_action_list = blue_lone_actions + list(
-    product(blue_host_actions, hostnames)
-)
+    product(blue_host_actions, hostnames))
+print("checking blue_action_list: ",blue_action_list)
+
 red_action_list = (
     red_lone_actions
     + list(product(red_network_actions, subnets))
-    + list(product(red_host_actions, hostnames))
-)
+    + list(product(red_host_actions, hostnames)))
+cardiff_action_list = [133, 134, 135, 139, 3, 4, 5, 9, 16, 17, 18, 22, 11, 12, 13, 14, 141, 142, 143, 144,
+                       132, 2, 15, 24, 25, 26, 27]
+print("checking cardiff_action_list: ",cardiff_action_list)
 
 # Batch and mini-batchsizes
 b1 = 61440          # original batch size
@@ -125,8 +130,8 @@ red_action_tries = pow(len(red_action_list),red_action_sequence)
 red_multiplier = 5
 
 b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
-mb_scaler = 16
-mb2 = b2 // 16                                  # ^
+mb_scaler = 10
+mb2 = b2 // mb_scaler                                  # ^
 
 batch_size = b2
 mini_batch_size = mb2
@@ -146,6 +151,7 @@ blue_minibatch_size = mini_batch_size
 
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
+cardiff_obs_space = 62
 
 # Declare algorithm configurations after hyperparameters are calculated
 
@@ -310,8 +316,7 @@ blu_is_opponent_impala_config = {
     # Added
     "train_batch_size": blue_batch_size,
     "minibatch_buffer_size": blue_minibatch_size,
-    "rollout_fragment_length": int(blue_batch_size/workers),
-}
+    "rollout_fragment_length": int(blue_batch_size/workers),}
 
 # Red Opp IMP Config
 red_is_opponent_impala_config = {
@@ -324,8 +329,7 @@ red_is_opponent_impala_config = {
 
     "train_batch_size": red_batch_size,
     "minibatch_buffer_size": red_minibatch_size,
-    "rollout_fragment_length": int(red_batch_size/workers),
-}
+    "rollout_fragment_length": int(red_batch_size/workers),}
 
 # Blue DQN Config
 blue_dqn_config = {
@@ -610,6 +614,81 @@ class DedicatedBlueEnv(gym.Env):
         info = {}
 
         return (obs, reward, done, info)
+
+class CardiffBlueEnv(gym.Env):
+    def __init__(self, env_config):
+
+        print("creating CardiffBlueEnv")
+
+        # agent name, for saving and loading
+        self.name = "blue_env"
+
+        # max timesteps per episode
+        self.max_t = timesteps
+
+        # define the blue action and observation spaces as gym objects
+        # self.action_space = Discrete(len(blue_action_list))                                   # CHANGE
+
+        # this current action space is a list of numbers (most likely enums from the CybORG action space)
+        self.action_space = Discrete(len(cardiff_action_list))
+        # print("self.action_space is ", self.action_space)
+
+        self.observation_space = Discrete(cardiff_obs_space)                                    # CHANGE
+
+        # create a CybORG environment with no agents (neither agent will be controlled by the environment)
+        cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+
+        # wrapper to accept red and blue actions, and return  observations
+        self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
+
+        # Red config for opponent
+        self.red_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),False))
+        
+    def reset(self):
+
+        path_file = open(f"./policies/{algorithm}/{timesteps}/competitive_red_policy", "r")
+        checkpoint_path = path_file.read()
+        path_file.close()
+        self.red_opponent.restore(checkpoint_path)
+    
+        obs, self.red_obs = self.cyborg.reset()    
+        return obs
+    
+    # the step function should receive a blue action
+    # the red action will be chosen within the step function
+    def step(self, action, verbose=False):
+
+        red_action = self.red_opponent.compute_single_action(self.red_obs)
+
+        # advance to the new state
+        state = self.cyborg.step(
+            red_action=red_action,
+            blue_action=action
+        )
+
+        # blue reward and new observation
+        obs = state.blue_observation
+        reward = state.reward
+        self.red_obs = state.red_observation
+
+        # show actions and new observation if examining a trained policy
+        if verbose == True:
+            print(f"Blue Action: {blue_action_list[action]}")
+            print(f"Red Action: {red_action_list[red_action]}")
+            print(self.cyborg.get_blue_table())
+            print(obs)
+            print(self.cyborg._create_red_table())
+            print(self.red_obs)
+            print(f'Known Subnets: {self.cyborg.known_subnets}')
+                    
+        # episode is done if last timestep has been reached
+        done = False
+        if self.cyborg.turn == self.cyborg.turns_per_game:
+            done = True
+        
+        info = {}
+
+        return (obs, reward, done, info)
     
 class RedTrainer(gym.Env):
     def __init__(self, env_config):
@@ -799,7 +878,27 @@ class DedicatedRedEnv(gym.Env):
 
         return (obs, reward, done, info)
 
-def build_blue_agent(fresh, opponent=False, dedicated=False):
+def build_cardiff_agent():
+
+    # register cardiff environment
+    print("creating the blue cardiff agent!")
+
+
+    # remove later - for testing purposes
+    CardiffBlueEnv(env_config={"name": f"{experiment_name}_cardiff_blue"})
+    
+
+    select_env = "CardiffBlueEnv"
+    register_env(
+        select_env,
+        lambda config: CardiffBlueEnv(
+            env_config={"name": f"{experiment_name}_cardiff_blue"}
+        )
+    )
+    blue_agent = None
+    return blue_agent
+
+def build_blue_agent(fresh, opponent=False, dedicated=False, cardiff=False):
 
     # register the custom environment
     if dedicated:
@@ -1024,6 +1123,8 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
         print(f'Low Score is {min_score}')
     
     return(avg_score)
+
+def sample_against_cardiff()
 
 def run_algorithm(config, env, algorithm_select):
     if(algorithm_select == "ppo"):

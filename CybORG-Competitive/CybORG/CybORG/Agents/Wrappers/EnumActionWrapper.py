@@ -20,6 +20,8 @@ class EnumActionWrapper(BaseWrapper):
         return super().step(agent, action)
 
     def action_space_change(self, action_space: dict) -> int:
+        print(action_space)
+        print(type(action_space))
         assert type(action_space) is dict, \
             f"Wrapper required a dictionary action space. " \
             f"Please check that the wrappers below the ReduceActionSpaceWrapper return the action space as a dict "
