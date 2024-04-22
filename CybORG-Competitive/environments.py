@@ -110,7 +110,6 @@ red_host_actions = (
 
 blue_action_list = blue_lone_actions + list(
     product(blue_host_actions, hostnames))
-# print("checking blue_action_list: ",blue_action_list)
 
 red_action_list = (
     red_lone_actions
@@ -833,8 +832,6 @@ class DedicatedRedEnv(gym.Env):
     def __init__(self, env_config):
         self.name = "red_env"
 
-        print("dont print this")
-
         # max timesteps per episode
         self.max_t = timesteps
 
@@ -888,8 +885,6 @@ class DedicatedRedEnv(gym.Env):
 
 class _DedicatedRedEnv_vs_cardiff(gym.Env):
     def __init__(self, env_config):
-
-        print("should be here!")
 
         self.name = "red_env"
 
@@ -954,7 +949,7 @@ def cardiff_wrap(env):
 def build_cardiff_agent():
 
     # register cardiff environment
-    print("creating the blue cardiff agent!")
+    # print("creating the blue cardiff agent!")
 
     # remove later - for testing purposes
     # CardiffBlueEnv(env_config={"name": f"{experiment_name}_cardiff_blue"})
@@ -966,7 +961,6 @@ def build_cardiff_agent():
             env_config={"name": f"{experiment_name}_cardiff_blue"}
         )
     )
-    print("returing...")
     return MainAgent()
 
 def build_blue_agent(fresh, opponent=False, dedicated=False, cardiff=False):
@@ -1218,7 +1212,6 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
 def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
 
     base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
-    # cardiff_cyborg = cardiff_wrap(CybORG(scenario_file="./scenario.yaml", environment="sim", agents={'Red': SleepAgent}))
     
     # wrapper to accept red and blue actions, and return observations
     cyborg = CompetitiveWrapper(env=base_cyborg, turns=timesteps, output_mode="vector")
@@ -1229,33 +1222,40 @@ def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
 
     for g in range(games):
 
-        print("g: ",g)
-
         # the blue_obs given by 'cyborg.reset()' is not the same as the one given by default cyborg's reset()
         blue_obs, red_obs = cyborg.reset(cardiff=True)
         test_blue.end_episode()
         score = 0
 
+        if verbose and (games>1):
+            print(f"-------- Game {g+1} --------")
+
         for t in range(timesteps):
             blue_action = test_blue.get_action(blue_obs)
             red_action, _, red_extras = test_red.compute_single_action(red_obs, full_fetch=True)
-            print("environments.py - red action is: ", red_action)
 
             state = cyborg.step(red_action, blue_action, cardiff=True)
-
-            # Logic reminder: Red wants to get as high of a score, while blue wants to get as low of a score
             red_reward = -state.reward
-
-            # double check that blue observation is in right format here
             blue_obs = state.blue_observation
-            print(len(blue_obs))
-
-
             red_obs = state.red_observation
 
             score += red_reward
 
-        # print("finished!")
+            if verbose:
+                print(f'---- Turn {t+1} ----')
+                # Cardiff actions are deterministic not stochastic!
+                print(f"Blue selects {blue_action_list[cyborg.convert_blue_action(blue_action)]} with probability {1*100:0.2f}%")
+                print()
+                print(f"Red selects {red_action_list[red_action]} with probability {red_extras['action_prob']*100:0.2f}%")
+                print()
+                # print(f'New Red observation: {red_obs}')
+                print(f'New Red observation: ')
+                print(cyborg._create_red_table())
+                print()
+                print(f"Reward: +{red_reward:0.1f}")
+                print(f"Score: {score:0.1f}")
+                print()
+
         scores.append(score)
         if score > max_score:
             max_score = score
@@ -1308,7 +1308,6 @@ def get_algorithm_config(algorithm_select, blue):
         raise ValueError("Selected algorithm config not implemented!")
 
 def get_opponent_config(algorithm_select, blue):
-    print("calling get_opponent_config()")
     if(algorithm_select == "ppo"):
         if(blue):
             return blu_is_opponent_ppo_config

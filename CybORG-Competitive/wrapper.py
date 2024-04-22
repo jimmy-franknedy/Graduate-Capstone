@@ -149,35 +149,37 @@ class CompetitiveWrapper(BaseWrapper):
                                     25:20, 
                                     26:21, 
                                     27:22,
-                                    51:54-1,
-                                    116:109-1,
-                                    55:57-1,
-                                    107:101-1,
-                                    120:112-1,
-                                    29:35-1,
-                                    43:47-1,
-                                    44:48-1,
-                                    37:42-1,
-                                    115:108-1,
-                                    76:75-1,
-                                    102:97-1,
-                                    51:54-1,
-                                    116:109-1,
-                                    38:43-1,
-                                    90:87-1,
-                                    130:121-1,
-                                    91:88-1,
-                                    131:122-1,
-                                    54:1-1,
-                                    106:1-1,
-                                    28:1-1,
-                                    119:1-1,
-                                    61:63-1,
-                                    35:41-1,
-                                    113:107-1,
-                                    126:118-1,
+                                    51:53,
+                                    116:108,
+                                    55:56,
+                                    107:100,
+                                    120:111,
+                                    29:34,
+                                    43:46,
+                                    44:47,
+                                    37:41,
+                                    115:107,
+                                    76:74,
+                                    102:96,
+                                    51:53,
+                                    116:108,
+                                    38:42,
+                                    90:86,
+                                    130:120,
+                                    91:87,
+                                    131:121,
+                                    54:0,
+                                    106:0,
+                                    28:0,
+                                    119:0,
+                                    61:62,
+                                    35:40,
+                                    113:106,
+                                    126:117,}
 
-        }
+    def convert_blue_action(self, action):
+        return self.cardiff_action_table[action]
+
     # convert the discrete action choice into its corresponding CybORG action
     def resolve_blue_action(self, action, cardiff=False):
         
@@ -197,11 +199,10 @@ class CompetitiveWrapper(BaseWrapper):
         # *** ACTION CONFLICT ARISES FROM HERE *** 
 
         # Convert the cardiff action to correct CybORG action
-        if(cardiff and (action is not 0)):
+        if(cardiff and (action > 0)):
             if action in self.cardiff_action_table:
-                a = action
                 action = self.cardiff_action_table[action]
-                # print(f"converted action {a} to {action}!")
+                # print("converted action is ", action)
             else:
                 raise ValueError(f"Action: {action} has not been converted!")
 
@@ -353,15 +354,15 @@ class CompetitiveWrapper(BaseWrapper):
         return (blue_vector, red_vector)
     
     def step(self, red_action, blue_action, cardiff=False) -> Results:
-        print("wrapper.py - step()")
-        print("cardiff is ",cardiff)
+        # print("wrapper.py - step()")
+        # print("cardiff is ",cardiff)
 
 
         red_step = self.resolve_red_action(red_action)
-        print("red_step is: ",red_step)
+        # print("red_step is: ",red_step)
 
         blue_step = self.resolve_blue_action(blue_action, cardiff=cardiff)
-        print("blu_step is: ",blue_step)
+        # print("blu_step is: ",blue_step)
 
         result = self.env.step(red_step, blue_step)
         self.turn += 1
