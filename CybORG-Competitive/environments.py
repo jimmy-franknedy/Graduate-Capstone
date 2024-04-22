@@ -47,7 +47,7 @@ algorithm = "ppo"
 workers = 40
 ngpus = 1
 if(laptop):
-    workers = 1
+    workers = 4
     ngpus = 0
 
 # Training parameters
@@ -833,6 +833,8 @@ class DedicatedRedEnv(gym.Env):
     def __init__(self, env_config):
         self.name = "red_env"
 
+        print("dont print this")
+
         # max timesteps per episode
         self.max_t = timesteps
 
@@ -878,6 +880,68 @@ class DedicatedRedEnv(gym.Env):
         # episode is done if last timestep has been reached
         done = False
         if self.cyborg.turn == self.cyborg.turns_per_game:
+            done = True
+        
+        info = {}
+
+        return (obs, reward, done, info)
+
+class _DedicatedRedEnv_vs_cardiff(gym.Env):
+    def __init__(self, env_config):
+
+        print("should be here!")
+
+        self.name = "red_env"
+
+        # max timesteps per episode
+        self.max_t = timesteps
+
+        # define the red action and observation spaces as gym objects
+        self.action_space = Discrete(len(red_action_list))
+        self.observation_space = MultiBinary(red_obs_space)
+
+        # create a CybORG environment with no agents (neither agent will be controlled by the environment)
+        cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+        
+        # wrapper to accept red and blue actions, and return red observations
+        self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
+
+        # copy of a config for the Blue opponent
+        self.blue_opponent = MainAgent()
+
+    def reset(self):
+
+        self.blue_opponent = MainAgent()
+        self.blue_obs, obs = self.cyborg.reset(cardiff=True)
+        return obs
+
+    # the step function should receive a red action
+    # the blue action will be chosen within the step function
+    def step(self, action, verbose=False):
+
+        # modified for cardiff
+        blue_action = self.blue_opponent.get_action(self.blue_obs)
+
+        # advance to the new state
+        state = self.cyborg.step(
+            red_action=action,
+            blue_action=blue_action,
+            cardiff=True
+        )
+
+        # red reward and new observation
+        obs = state.red_observation
+        reward = -state.reward # reward signal is flipped here for the red agent
+
+        self.blue_obs = state.blue_observation
+  
+        # episode is done if last timestep has been reached
+        done = False
+        if self.cyborg.turn == self.cyborg.turns_per_game:
+
+            # based on this logic we won't have to worry about
+            # setting back cardiff's inital actions because it get's handled
+            # in reset()
             done = True
         
         info = {}
@@ -971,9 +1035,17 @@ def build_blue_agent(fresh, opponent=False, dedicated=False, cardiff=False):
             path_file.close() 
     return blue_agent
 
-def build_red_agent(fresh, opponent=False, dedicated=False):
+def build_red_agent(fresh, opponent=False, dedicated=False, vs_cardiff=False):
     # register the custom environment
-    if dedicated:
+    if vs_cardiff:
+        select_env = "DedicatedRedEnv_vs_cardiff"
+        register_env(
+            select_env,
+            lambda config: DedicatedRedEnv_vs_cardiff(
+                env_config={"name": f"{experiment_name}_DedicatedRedEnv_vs_cardiff"}
+            )
+        )
+    elif dedicated:
         select_env = "DedicatedRedEnv"
         register_env(
             select_env,
@@ -988,7 +1060,7 @@ def build_red_agent(fresh, opponent=False, dedicated=False):
             lambda config: RedOpponent(
                 env_config={"name": f"{experiment_name}_opponent_red"}
             )
-        )
+        )    
     else:
         select_env = "RedTrainer"
         register_env(
@@ -1001,7 +1073,18 @@ def build_red_agent(fresh, opponent=False, dedicated=False):
     # set the RLLib configuration
     red_config = get_algorithm_config(algorithm,False)
 
-    if dedicated:
+    if vs_cardiff:
+        red_agent = run_algorithm(config=red_config, env=_DedicatedRedEnv_vs_cardiff,algorithm_select=algorithm)
+        if fresh:
+            checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/dedicated_red_0")
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/dedicated_red_0/checkpoint_path", "w")
+            path_file.write(checkpoint_path)
+            path_file.close()
+            print(checkpoint_path)
+            path_file = open(f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/pool_size", "w")
+            path_file.write("0")
+            path_file.close()    
+    elif dedicated:
         red_agent = run_algorithm(config=red_config, env=DedicatedRedEnv,algorithm_select=algorithm)
         if fresh:
             checkpoint_path = red_agent.save(checkpoint_dir=f"./policies/{algorithm}/{timesteps}/red_dedicated_pool/dedicated_red_0")
@@ -1165,11 +1248,14 @@ def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
 
             # double check that blue observation is in right format here
             blue_obs = state.blue_observation
+            print(len(blue_obs))
+
+
             red_obs = state.red_observation
 
             score += red_reward
 
-        print("finished a game")
+        # print("finished!")
         scores.append(score)
         if score > max_score:
             max_score = score

@@ -35,25 +35,12 @@ from prettytable import PrettyTable
 import numpy as np
 
 class CompetitiveWrapper(BaseWrapper):
-    def __init__(self, turns, env=None, agent=None, output_mode="vector"):
+    def __init__(self, turns, env=None, agent=None, output_mode="vector", cardiff=False):
         super().__init__(env, agent)
         self.env = TrueTableWrapper(env=env, agent=agent)
 
-        # should set up the environment for the cardiff agent for us to train against
-
-        # evaluation.py
-        # cyborg = CybORG(path, 'sim', agents={'Red': red_agent})
-        # wrapped_cyborg = wrap(cyborg)
-
-        # wrap() calls challenge wrapper2 which does this
-        # env = table_wrapper(env, output_mode='vector')
-        # env = EnumActionWrapper(env)
-        # env = OpenAIGymWrapper(agent_name=agent_name, env=env)
-
-        # scenario = 'Scenario2'
-        # path = str(inspect.getfile(CybORG))[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
-        # want to create a default cardiff env to get the action space for cardiff agent because competitive blue agent action space mising stuff
-        # self.cardiff_env = ChallengeWrapper2(env=defaultCybORG(path, 'sim', agents={'Red': B_lineAgent}),agent_name='Blue')
+        # Used for training against cardiff agent
+        self.cardiff_flag=cardiff
 
         self.agent = agent
 
@@ -105,7 +92,7 @@ class CompetitiveWrapper(BaseWrapper):
         self.blue_action_list = blue_lone_actions + list(
             product(blue_host_actions, self.hostnames)
         )
-        print("wrapper.py: ", len(self.blue_action_list)) # Blu should have 145 possible actions; currently has 122
+        # print("wrapper.py: ", len(self.blue_action_list)) # Blu should have 145 possible actions; currently has 122
         self.red_action_list = (
             red_lone_actions
             + list(product(red_network_actions, self.subnets))
@@ -210,13 +197,13 @@ class CompetitiveWrapper(BaseWrapper):
         # *** ACTION CONFLICT ARISES FROM HERE *** 
 
         # Convert the cardiff action to correct CybORG action
-        if(cardiff):
+        if(cardiff and (action is not 0)):
             if action in self.cardiff_action_table:
                 a = action
                 action = self.cardiff_action_table[action]
                 # print(f"converted action {a} to {action}!")
             else:
-                raise ValueError("Action: {action} has not been converted!")
+                raise ValueError(f"Action: {action} has not been converted!")
 
         cyborg_action = self.blue_action_list[action]
 
@@ -366,6 +353,9 @@ class CompetitiveWrapper(BaseWrapper):
         return (blue_vector, red_vector)
     
     def step(self, red_action, blue_action, cardiff=False) -> Results:
+        print("wrapper.py - step()")
+        print("cardiff is ",cardiff)
+
 
         red_step = self.resolve_red_action(red_action)
         print("red_step is: ",red_step)
