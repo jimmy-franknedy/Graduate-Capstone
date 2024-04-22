@@ -1,8 +1,11 @@
 # Import the Cardiff Agent's Directory
 from cardiff import *
-from cardiff.cage2.Agents import MainAgent
+from cardiff.cage2.Wrappers.BlueTableWrapper import BlueTableWrapper
+from cardiff.cage2.Wrappers.ChallengeWrapper2 import ChallengeWrapper2
+from cardiff.cage2.Agents.MainAgent import MainAgent
 
 from CybORG import CybORG
+from CybORG.Agents import B_lineAgent, SleepAgent
 from wrapper import CompetitiveWrapper
 
 import gym
@@ -44,7 +47,7 @@ algorithm = "ppo"
 workers = 40
 ngpus = 1
 if(laptop):
-    workers = 4
+    workers = 1
     ngpus = 0
 
 # Training parameters
@@ -97,7 +100,6 @@ blue_host_actions = (
     "DecoyTomcat", 
     "DecoyVsftpd",)  # actions with a hostname parameter
 
-
 red_lone_actions = [["Sleep"], ["Impact"]]  # actions with no parameters
 red_network_actions = [
     "DiscoverSystems"]  # actions with a subnet as the parameter
@@ -108,15 +110,15 @@ red_host_actions = (
 
 blue_action_list = blue_lone_actions + list(
     product(blue_host_actions, hostnames))
-print("checking blue_action_list: ",blue_action_list)
+# print("checking blue_action_list: ",blue_action_list)
 
 red_action_list = (
     red_lone_actions
     + list(product(red_network_actions, subnets))
     + list(product(red_host_actions, hostnames)))
 cardiff_action_list = [133, 134, 135, 139, 3, 4, 5, 9, 16, 17, 18, 22, 11, 12, 13, 14, 141, 142, 143, 144,
-                       132, 2, 15, 24, 25, 26, 27]
-print("checking cardiff_action_list: ",cardiff_action_list)
+                       132, 2, 15, 24, 25, 26, 27] #27 elements
+# print("checking cardiff_action_list: ",cardiff_action_list)
 
 # Batch and mini-batchsizes
 b1 = 61440          # original batch size
@@ -136,9 +138,9 @@ mb2 = b2 // mb_scaler                                  # ^
 batch_size = b2
 mini_batch_size = mb2
 
-print("batch_size: ", batch_size)
-print("mini_batch_size: ", mini_batch_size)
-print("rollout_fragment_length: ",int(batch_size/workers))
+# print("batch_size: ", batch_size)
+# print("mini_batch_size: ", mini_batch_size)
+# print("rollout_fragment_length: ",int(batch_size/workers))
 
 if(laptop):
     batch_size = 100
@@ -151,7 +153,7 @@ blue_minibatch_size = mini_batch_size
 
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
-cardiff_obs_space = 62
+cardiff_obs_space = 52
 
 # Declare algorithm configurations after hyperparameters are calculated
 
@@ -228,6 +230,8 @@ red_is_opponent_ppo_config = {
     "action_space": Discrete(len(red_action_list)),
     'vf_share_layers': False,
     'log_sys_usage': False,}
+
+cardiff_config = {}
 
 # Blu IMP Config
 blue_impala_config = {
@@ -487,6 +491,8 @@ class BlueOpponent(gym.Env):
         # create a CybORG environment with no agents (neither agent will be controlled by the environment)
         cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
         # wrapper to accept red and blue actions, and return  observations
+
+        print("calling competitive wrapper")
         self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
 
         # Red config for opponent
@@ -878,16 +884,17 @@ class DedicatedRedEnv(gym.Env):
 
         return (obs, reward, done, info)
 
+def cardiff_wrap(env):
+    return ChallengeWrapper2(env=env, agent_name='Blue')
+
 def build_cardiff_agent():
 
     # register cardiff environment
     print("creating the blue cardiff agent!")
 
-
     # remove later - for testing purposes
-    CardiffBlueEnv(env_config={"name": f"{experiment_name}_cardiff_blue"})
+    # CardiffBlueEnv(env_config={"name": f"{experiment_name}_cardiff_blue"})
     
-
     select_env = "CardiffBlueEnv"
     register_env(
         select_env,
@@ -895,8 +902,8 @@ def build_cardiff_agent():
             env_config={"name": f"{experiment_name}_cardiff_blue"}
         )
     )
-    blue_agent = None
-    return blue_agent
+    print("returing...")
+    return MainAgent()
 
 def build_blue_agent(fresh, opponent=False, dedicated=False, cardiff=False):
 
@@ -1030,6 +1037,7 @@ def build_red_agent(fresh, opponent=False, dedicated=False):
     return red_agent
 
 def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_moves=None, red_moves=None, random_blue=False, random_red=False):
+    
     base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
     
     # wrapper to accept red and blue actions, and return observations
@@ -1124,7 +1132,57 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
     
     return(avg_score)
 
-def sample_against_cardiff()
+def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
+
+    base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+    # cardiff_cyborg = cardiff_wrap(CybORG(scenario_file="./scenario.yaml", environment="sim", agents={'Red': SleepAgent}))
+    
+    # wrapper to accept red and blue actions, and return observations
+    cyborg = CompetitiveWrapper(env=base_cyborg, turns=timesteps, output_mode="vector")
+
+    scores = []
+    max_score = 0
+    min_score = float('inf')
+
+    for g in range(games):
+
+        print("g: ",g)
+
+        # the blue_obs given by 'cyborg.reset()' is not the same as the one given by default cyborg's reset()
+        blue_obs, red_obs = cyborg.reset(cardiff=True)
+        test_blue.end_episode()
+        score = 0
+
+        for t in range(timesteps):
+            blue_action = test_blue.get_action(blue_obs)
+            red_action, _, red_extras = test_red.compute_single_action(red_obs, full_fetch=True)
+            print("environments.py - red action is: ", red_action)
+
+            state = cyborg.step(red_action, blue_action, cardiff=True)
+
+            # Logic reminder: Red wants to get as high of a score, while blue wants to get as low of a score
+            red_reward = -state.reward
+
+            # double check that blue observation is in right format here
+            blue_obs = state.blue_observation
+            red_obs = state.red_observation
+
+            score += red_reward
+
+        print("finished a game")
+        scores.append(score)
+        if score > max_score:
+            max_score = score
+        if score < min_score:
+            min_score = score
+    
+    avg_score = mean(scores)
+    if verbose and (games>1):
+        print(f'Average Score for {games} Games is {avg_score}')
+        print(f'High Score is {max_score}')
+        print(f'Low Score is {min_score}')
+    
+    return(avg_score)
 
 def run_algorithm(config, env, algorithm_select):
     if(algorithm_select == "ppo"):
@@ -1164,7 +1222,7 @@ def get_algorithm_config(algorithm_select, blue):
         raise ValueError("Selected algorithm config not implemented!")
 
 def get_opponent_config(algorithm_select, blue):
-    print("go here")
+    print("calling get_opponent_config()")
     if(algorithm_select == "ppo"):
         if(blue):
             return blu_is_opponent_ppo_config

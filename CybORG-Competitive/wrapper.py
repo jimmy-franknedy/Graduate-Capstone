@@ -1,3 +1,10 @@
+# Import Cardiff Wrappers here
+import inspect
+from cardiff import *
+from cardiff.cage2.Wrappers.BlueTableWrapper import BlueTableWrapper
+from cardiff.cage2.Wrappers.ChallengeWrapper2 import ChallengeWrapper2
+from CybORG.Agents import B_lineAgent, SleepAgent
+
 from CybORG.Agents.Wrappers.BaseWrapper import BaseWrapper
 from CybORG.Agents.Wrappers.TrueTableWrapper import TrueTableWrapper
 from CybORG.Shared.Results import Results
@@ -31,6 +38,23 @@ class CompetitiveWrapper(BaseWrapper):
     def __init__(self, turns, env=None, agent=None, output_mode="vector"):
         super().__init__(env, agent)
         self.env = TrueTableWrapper(env=env, agent=agent)
+
+        # should set up the environment for the cardiff agent for us to train against
+
+        # evaluation.py
+        # cyborg = CybORG(path, 'sim', agents={'Red': red_agent})
+        # wrapped_cyborg = wrap(cyborg)
+
+        # wrap() calls challenge wrapper2 which does this
+        # env = table_wrapper(env, output_mode='vector')
+        # env = EnumActionWrapper(env)
+        # env = OpenAIGymWrapper(agent_name=agent_name, env=env)
+
+        # scenario = 'Scenario2'
+        # path = str(inspect.getfile(CybORG))[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
+        # want to create a default cardiff env to get the action space for cardiff agent because competitive blue agent action space mising stuff
+        # self.cardiff_env = ChallengeWrapper2(env=defaultCybORG(path, 'sim', agents={'Red': B_lineAgent}),agent_name='Blue')
+
         self.agent = agent
 
         self.red_info = {}
@@ -81,6 +105,7 @@ class CompetitiveWrapper(BaseWrapper):
         self.blue_action_list = blue_lone_actions + list(
             product(blue_host_actions, self.hostnames)
         )
+        print("wrapper.py: ", len(self.blue_action_list)) # Blu should have 145 possible actions; currently has 122
         self.red_action_list = (
             red_lone_actions
             + list(product(red_network_actions, self.subnets))
@@ -105,9 +130,69 @@ class CompetitiveWrapper(BaseWrapper):
         # Added for cardiff implementation
         self.cardiff_action_list = [133, 134, 135, 139, 3, 4, 5, 9, 16, 17, 18, 22, 11, 12, 13, 14, 141, 142, 143, 144,
                                     132, 2, 15, 24, 25, 26, 27]
-    
+        
+        # defender specific actions are set to Monitor
+        # defender specific actions are 132,2,15
+        # if trained with complete 145 blue action; we can just remove this dictionary
+        # if remove this dictionary; also remove logic in env_controller, resolve blue action
+        self.cardiff_action_table = {133:23, 
+                                    134:24, 
+                                    135:25, 
+                                    139:29, 
+                                    3:1, 
+                                    4:2, 
+                                    5:3, 
+                                    9:7, 
+                                    16:12, 
+                                    17:13, 
+                                    18:14, 
+                                    22:18, 
+                                    11:8, 
+                                    12:9, 
+                                    13:10, 
+                                    14:11, 
+                                    141:30, 
+                                    142:31, 
+                                    143:32, 
+                                    144:33,
+                                    132:0, 
+                                    2:0, 
+                                    15:0, 
+                                    24:19, 
+                                    25:20, 
+                                    26:21, 
+                                    27:22,
+                                    51:54-1,
+                                    116:109-1,
+                                    55:57-1,
+                                    107:101-1,
+                                    120:112-1,
+                                    29:35-1,
+                                    43:47-1,
+                                    44:48-1,
+                                    37:42-1,
+                                    115:108-1,
+                                    76:75-1,
+                                    102:97-1,
+                                    51:54-1,
+                                    116:109-1,
+                                    38:43-1,
+                                    90:87-1,
+                                    130:121-1,
+                                    91:88-1,
+                                    131:122-1,
+                                    54:1-1,
+                                    106:1-1,
+                                    28:1-1,
+                                    119:1-1,
+                                    61:63-1,
+                                    35:41-1,
+                                    113:107-1,
+                                    126:118-1,
+
+        }
     # convert the discrete action choice into its corresponding CybORG action
-    def resolve_blue_action(self, action):
+    def resolve_blue_action(self, action, cardiff=False):
         
         # assume a "single session" in the CybORG action space
         cyborg_space = self.get_action_space(agent="Blue")
@@ -122,33 +207,56 @@ class CompetitiveWrapper(BaseWrapper):
         # This is the part where the author only selects one session! I think we have a total of 13 sessions, but 11 usable sessions for both agents
         session = list(cyborg_space["session"].keys())[0]
 
+        # *** ACTION CONFLICT ARISES FROM HERE *** 
+
+        # Convert the cardiff action to correct CybORG action
+        if(cardiff):
+            if action in self.cardiff_action_table:
+                a = action
+                action = self.cardiff_action_table[action]
+                # print(f"converted action {a} to {action}!")
+            else:
+                raise ValueError("Action: {action} has not been converted!")
+
         cyborg_action = self.blue_action_list[action]
 
         if cyborg_action[0] == "Analyse":
+            # print("calling - Analyse on ", cyborg_action[1])
             return Analyse(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "Remove":
+            # print("calling - Remove on ", cyborg_action[1])
             return Remove(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "Restore":
+            # print("calling - Restore on ", cyborg_action[1])
             return Restore(hostname=cyborg_action[1], agent="Blue", session=session)
 
         elif cyborg_action[0] == "DecoyApache":
+            # print("calling - DecoyApache on ", cyborg_action[1])
             return DecoyApache(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoyFemitter":
+            # print("calling - DecoyFemitter on ", cyborg_action[1])
             return DecoyFemitter(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoyHarakaSMPT":
+            # print("calling - DecoyHarakaSMPT on ", cyborg_action[1])
             return DecoyHarakaSMPT(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoySmss":
+            # print("calling - DecoySmss on ", cyborg_action[1])
             return DecoySmss(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoySSHD":
+            # print("calling - DecoySSHD on ", cyborg_action[1])
             return DecoySSHD(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoySvchost":
+            # print("calling - DecoySvchost on ", cyborg_action[1])
             return DecoySvchost(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoyTomcat":
+            # print("calling - DecoyTomcat on ", cyborg_action[1])
             return DecoyTomcat(hostname=cyborg_action[1], agent="Blue", session=session)
         elif cyborg_action[0] == "DecoyVsftpd":
+            # print("calling - DecoyVsftpd on ", cyborg_action[1])
             return DecoyVsftpd(hostname=cyborg_action[1], agent="Blue", session=session)
 
         else:
+            # print("calling - Monitor on Defender?", cyborg_action[1])
             return Monitor(agent="Blue", session=session)
     
     def resolve_red_action(self, action):
@@ -167,30 +275,36 @@ class CompetitiveWrapper(BaseWrapper):
 
         cyborg_action = self.red_action_list[action]
         if cyborg_action[0] == "Impact":
+            # print("calling - Impact on Op_Server0", )
             return Impact(agent="Red", hostname="Op_Server0", session=session)
         elif cyborg_action[0] == "DiscoverSystems":
+            # print("calling - Impact on ",self.subnet_map[cyborg_action[1]])
             return DiscoverRemoteSystems(
                 subnet=self.subnet_map[cyborg_action[1]],
                 agent="Red",
                 session=session,
             )
         elif cyborg_action[0] == "DiscoverServices":
+            # print("calling - DiscoverNetworkServices on ",self.subnet_map[cyborg_action[1]])
             return DiscoverNetworkServices(
                 ip_address=self.ip_map[cyborg_action[1]],
                 agent="Red",
                 session=session,
             )
         elif cyborg_action[0] == "ExploitServices":
+           # print("calling - ExploitServices on ",self.subnet_map[cyborg_action[1]])
             return ExploitRemoteService(
                 ip_address=self.ip_map[cyborg_action[1]],
                 agent="Red",
                 session=session,
             )
         elif cyborg_action[0] == "PrivilegeEscalate":
+            # print("calling - PrivilegeEscalate on ",self.subnet_map[cyborg_action[1]])
             return PrivilegeEscalate(
                 hostname=cyborg_action[1], agent="Red", session=session
             )
         else:
+            # print("calling sleep!")
             return Sleep()
 
     def map_network(self, env):
@@ -224,7 +338,7 @@ class CompetitiveWrapper(BaseWrapper):
             i += 1
 
     # returns the blue and red observation vectors
-    def reset(self):
+    def reset(self, cardiff=False):
 
         self.blue_info = {}
         self.red_info = {}
@@ -244,23 +358,26 @@ class CompetitiveWrapper(BaseWrapper):
 
         blue_obs = result.blue_observation # the environment now returns both observations, so blue_observation needs to be specified here
         self._initial_blue_obs(blue_obs)
-        blue_vector = self.blue_observation_change(blue_obs, baseline=True)
+        blue_vector = self.blue_observation_change(blue_obs, baseline=True, cardiff=cardiff)
 
         red_obs = result.red_observation
         red_vector = self.red_observation_change(red_obs, self.get_last_action(agent="Red"))
 
         return (blue_vector, red_vector)
     
-    def step(self, red_action, blue_action) -> Results:
+    def step(self, red_action, blue_action, cardiff=False) -> Results:
 
         red_step = self.resolve_red_action(red_action)
-        blue_step = self.resolve_blue_action(blue_action)
+        print("red_step is: ",red_step)
+
+        blue_step = self.resolve_blue_action(blue_action, cardiff=cardiff)
+        print("blu_step is: ",blue_step)
 
         result = self.env.step(red_step, blue_step)
         self.turn += 1
 
         blue_obs = result.blue_observation
-        blue_vector = self.blue_observation_change(blue_obs)
+        blue_vector = self.blue_observation_change(blue_obs,cardiff=cardiff)
         result.blue_observation = blue_vector
 
         red_obs = result.red_observation
@@ -287,7 +404,7 @@ class CompetitiveWrapper(BaseWrapper):
             self.blue_info[hostname] = [str(subnet), str(ip), hostname, "None", "No"]
         return self.blue_info
     
-    def blue_observation_change(self, observation, baseline=False):
+    def blue_observation_change(self, observation, baseline=False, cardiff=False):
         obs = observation if type(observation) == dict else observation.data
         obs = deepcopy(observation)
         success = obs["success"]
@@ -304,6 +421,9 @@ class CompetitiveWrapper(BaseWrapper):
                 self.blue_info[host][-1] = "No"
 
         self.info = info
+
+        if cardiff:
+            return self._create_cardiff_vector(success)
 
         if self.output_mode == "table":
             return self._create_blue_table(success)
@@ -440,7 +560,40 @@ class CompetitiveWrapper(BaseWrapper):
             anomaly = "Scan"
 
         return anomaly
-    
+
+    def _create_cardiff_vector(self, success):
+        table = self._create_blue_table(success)._rows
+
+        proto_vector = []
+        for row in table:
+            # Activity
+            activity = row[3]
+            if activity == 'None':
+                value = [0, 0]
+            elif activity == 'Scan':
+                value = [1, 0]
+            elif activity == 'Exploit':
+                value = [1, 1]
+            else:
+                raise ValueError('Table had invalid Access Level')
+            proto_vector.extend(value)
+
+            # Compromised
+            compromised = row[4]
+            if compromised == 'No':
+                value = [0, 0]
+            elif compromised == 'Unknown':
+                value = [1, 0]
+            elif compromised == 'User':
+                value = [0, 1]
+            elif compromised == 'Privileged':
+                value = [1, 1]
+            else:
+                raise ValueError('Table had invalid Access Level')
+            proto_vector.extend(value)
+
+        return np.array(proto_vector)
+
     def _create_blue_vector(self, success):
         table = self._create_blue_table(success)._rows
 
