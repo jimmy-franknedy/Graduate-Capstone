@@ -39,8 +39,8 @@ laptop = True
 timesteps = 30
 
 # Agent's training algorithm
-algorithm = "ppo"
-# algorithm = "impala"
+# algorithm = "ppo"
+algorithm = "impala"
 # algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
