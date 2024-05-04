@@ -4,6 +4,13 @@ from cardiff.cage2.Wrappers.BlueTableWrapper import BlueTableWrapper
 from cardiff.cage2.Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 from cardiff.cage2.Agents.MainAgent import MainAgent
 
+# Import the Mindrake Agent's Directory
+from mindrake import *
+from mindrake.agents.baseline_sub_agents import BlueTableActionWrapper
+from mindrake.agents.baseline_sub_agents import CybORGActionAgent
+from mindrake.agents.baseline_sub_agents.loadBanditController import LoadBanditBlueAgent as LoadBlueAgent
+
+# Default import
 from CybORG import CybORG
 from CybORG.Agents import B_lineAgent, SleepAgent
 from wrapper import CompetitiveWrapper
@@ -39,8 +46,8 @@ laptop = True
 timesteps = 30
 
 # Agent's training algorithm
-# algorithm = "ppo"
-algorithm = "impala"
+algorithm = "ppo"
+# algorithm = "impala"
 # algorithm = "dqn"
 
 # Set the number of workers, and numGPUs given the laptop flag
@@ -132,7 +139,7 @@ red_multiplier = 5
 
 b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
 mb_scaler = 10
-mb2 = b2 // mb_scaler                                  # ^
+mb2 = b2 // mb_scaler                           # ^
 
 batch_size = b2
 mini_batch_size = mb2
@@ -153,6 +160,7 @@ blue_minibatch_size = mini_batch_size
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 cardiff_obs_space = 52
+mindrake_obs_space = None
 
 # Declare algorithm configurations after hyperparameters are calculated
 
@@ -230,15 +238,13 @@ red_is_opponent_ppo_config = {
     'vf_share_layers': False,
     'log_sys_usage': False,}
 
-cardiff_config = {}
-
 # Blu IMP Config
 blue_impala_config = {
     "env": "blue_trainer",
     "num_gpus": ngpus,
     "num_workers": workers,
     "train_batch_size": blue_batch_size,
-    "minibatch_buffer_size": blue_minibatch_size,
+    # "minibatch_buffer_size": 1,
     "rollout_fragment_length": int(blue_batch_size/workers),
     "num_sgd_iter": epochs,
     "batch_mode": "truncate_episodes",
@@ -268,7 +274,9 @@ blue_impala_config = {
     # "replay_proportion": 0.5,
     # "replay_buffer_num_slots": blue_batch_size,
 
-    "learner_queue_size": workers,}
+    "timeout_s_sampler_manager": 60,
+    "learner_queue_timeout": 600,
+    "learner_queue_size": 40,}
 
 # Red IMP Config
 red_impala_config = {
@@ -276,7 +284,7 @@ red_impala_config = {
     "num_gpus": ngpus,
     "num_workers": workers,
     "train_batch_size": red_batch_size,
-    "minibatch_buffer_size": red_minibatch_size,
+    # "minibatch_buffer_size": 1,
     "rollout_fragment_length": int(red_batch_size/workers),
     "num_sgd_iter": epochs,
     "batch_mode": "truncate_episodes",
@@ -305,12 +313,15 @@ red_impala_config = {
     # "replay_proportion": 0.5,
     # "replay_buffer_num_slots": red_batch_size,
 
-    "learner_queue_size": workers,}
+    "timeout_s_sampler_manager": 60,
+    "learner_queue_timeout": 600,
+    "learner_queue_size": 40,}
 
 # Blu Opp IMP Config
 blu_is_opponent_impala_config = {
     "num_workers": 0,
     "num_gpus": 0,
+    "num_multi_gpu_tower_stacks": 1,
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(blue_obs_space),
     "action_space": Discrete(len(blue_action_list)),
@@ -318,21 +329,33 @@ blu_is_opponent_impala_config = {
 
     # Added
     "train_batch_size": blue_batch_size,
-    "minibatch_buffer_size": blue_minibatch_size,
-    "rollout_fragment_length": int(blue_batch_size/workers),}
+    # "minibatch_buffer_size": 1,
+    "rollout_fragment_length": int(blue_batch_size/workers),
+    "num_sgd_iter": epochs,
+
+    "timeout_s_sampler_manager": 60,
+    "learner_queue_timeout": 600,
+    "learner_queue_size": 40,}
 
 # Red Opp IMP Config
 red_is_opponent_impala_config = {
     "num_workers": 0,
     "num_gpus": 0,
+    "num_multi_gpu_tower_stacks": 1,
     "model": {"fcnet_hiddens": model_arch, "fcnet_activation": act_func},
     "observation_space": MultiBinary(red_obs_space),
     "action_space": Discrete(len(red_action_list)),
     "log_sys_usage": False,
 
     "train_batch_size": red_batch_size,
-    "minibatch_buffer_size": red_minibatch_size,
-    "rollout_fragment_length": int(red_batch_size/workers),}
+    # "minibatch_buffer_size": 2,
+    "rollout_fragment_length": int(red_batch_size/workers),
+    "num_sgd_iter": epochs,
+
+
+    "timeout_s_sampler_manager": 60,
+    "learner_queue_timeout": 600,
+    "learner_queue_size": 40,}
 
 # Blue DQN Config
 blue_dqn_config = {
@@ -694,6 +717,81 @@ class CardiffBlueEnv(gym.Env):
         info = {}
 
         return (obs, reward, done, info)
+
+class MindrakeBlueEnv(gym.Env):
+    def __init__(self, env_config):
+
+        print("creating MindrakeBlueEnv")
+
+        # agent name, for saving and loading
+        self.name = "blue_env"
+
+        # max timesteps per episode
+        self.max_t = timesteps
+
+        # define the blue action and observation spaces as gym objects
+        # self.action_space = Discrete(len(blue_action_list))                                   # CHANGE
+
+        # this current action space is a list of numbers (most likely enums from the CybORG action space)
+        self.action_space = Discrete(len(cardiff_action_list))
+        # print("self.action_space is ", self.action_space)
+
+        self.observation_space = Discrete(cardiff_obs_space)                                    # CHANGE
+
+        # create a CybORG environment with no agents (neither agent will be controlled by the environment)
+        cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+
+        # wrapper to accept red and blue actions, and return  observations
+        self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
+
+        # Red config for opponent
+        self.red_opponent = get_opponent(get_algorithm_select(),get_opponent_config(get_algorithm_select(),False))
+        
+    def reset(self):
+
+        path_file = open(f"./policies/{algorithm}/{timesteps}/competitive_red_policy", "r")
+        checkpoint_path = path_file.read()
+        path_file.close()
+        self.red_opponent.restore(checkpoint_path)
+    
+        obs, self.red_obs = self.cyborg.reset()    
+        return obs
+    
+    # the step function should receive a blue action
+    # the red action will be chosen within the step function
+    def step(self, action, verbose=False):
+
+        red_action = self.red_opponent.compute_single_action(self.red_obs)
+
+        # advance to the new state
+        state = self.cyborg.step(
+            red_action=red_action,
+            blue_action=action
+        )
+
+        # blue reward and new observation
+        obs = state.blue_observation
+        reward = state.reward
+        self.red_obs = state.red_observation
+
+        # show actions and new observation if examining a trained policy
+        if verbose == True:
+            print(f"Blue Action: {blue_action_list[action]}")
+            print(f"Red Action: {red_action_list[red_action]}")
+            print(self.cyborg.get_blue_table())
+            print(obs)
+            print(self.cyborg._create_red_table())
+            print(self.red_obs)
+            print(f'Known Subnets: {self.cyborg.known_subnets}')
+                    
+        # episode is done if last timestep has been reached
+        done = False
+        if self.cyborg.turn == self.cyborg.turns_per_game:
+            done = True
+        
+        info = {}
+
+        return (obs, reward, done, info)
     
 class RedTrainer(gym.Env):
     def __init__(self, env_config):
@@ -946,6 +1044,9 @@ class _DedicatedRedEnv_vs_cardiff(gym.Env):
 def cardiff_wrap(env):
     return ChallengeWrapper2(env=env, agent_name='Blue')
 
+def mindrake_wrap(config):
+    return CybORGActionAgent(config)
+
 def build_cardiff_agent():
 
     # register cardiff environment
@@ -963,7 +1064,18 @@ def build_cardiff_agent():
     )
     return MainAgent()
 
-def build_blue_agent(fresh, opponent=False, dedicated=False, cardiff=False):
+def build_mindrake_agent():
+
+    select_env = "MindrakeBlueEnv"
+    register_env(
+        select_env,
+        lambda config: MindrakeBlueEnv(
+            env_config={"name": f"{experiment_name}_mindrake_blue"}
+        )
+    )
+    return LoadBlueAgent()
+
+def build_blue_agent(fresh, opponent=False, dedicated=False):
 
     # register the custom environment
     if dedicated:
