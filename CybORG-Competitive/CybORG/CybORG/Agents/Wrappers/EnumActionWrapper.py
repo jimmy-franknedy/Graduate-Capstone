@@ -20,8 +20,6 @@ class EnumActionWrapper(BaseWrapper):
         return super().step(agent, action)
 
     def action_space_change(self, action_space: dict) -> int:
-        # print(action_space)
-        # print(type(action_space))
         if(action_space is None):
             print("action_space is None!")
         assert type(action_space) is dict, \

@@ -15,12 +15,31 @@ class BaseWrapper:
     def step(self, agent=None, action=None) -> Results:
         result = self.env.step(agent, action)
         result.observation = self.observation_change(result.observation)
-        result.action_space = self.action_space_change(result.action_space)
+
+        # original line
+        # result.action_space = self.action_space_change(result.action_space)
+
+        # edited line: only get result.action_space if its not nonef
+        if(result.action_space is not None):
+            result.action_space = self.action_space_change(result.action_space)
+
         return result
 
     def reset(self, agent=None):
+
         result = self.env.reset(agent)
-        result.action_space = self.action_space_change(result.action_space)
+        # there is no action space after you reset!
+
+        # error follows here
+        # original line
+        # result.action_space = self.action_space_change(result.action_space)
+
+        # edited line: only update if result.action_space is not None
+        if(result.action_space is not None):
+            result.action_space = self.action_space_change(result.action_space)
+
+        # error follows here
+
         result.observation = self.observation_change(result.observation)
         return result
 

@@ -1,3 +1,7 @@
+# Other imports
+import sys, os, shutil
+from statistics import stdev
+
 # Import the Cardiff Agent's Directory
 from cardiff import *
 from cardiff.cage2.Wrappers.BlueTableWrapper import BlueTableWrapper
@@ -8,14 +12,17 @@ from cardiff.cage2.Agents.MainAgent import MainAgent
 from mindrake import *
 from mindrake.agents.baseline_sub_agents import BlueTableActionWrapper
 from mindrake.agents.baseline_sub_agents import CybORGActionAgent
+from mindrake.agents.baseline_sub_agents.CybORGActionAgent import CybORGActionAgent
 from mindrake.agents.baseline_sub_agents.loadBanditController import LoadBanditBlueAgent as LoadBlueAgent
 
 # Default import
 from CybORG import CybORG
+from CybORG.Agents.Wrappers.TrueTableWrapper import true_obs_to_table
 from CybORG.Agents import B_lineAgent, SleepAgent
 from wrapper import CompetitiveWrapper
 
 import gym
+from gym import spaces
 from gym.spaces import Discrete, MultiBinary
 
 # PPO
@@ -43,7 +50,7 @@ from statistics import mean
 laptop = True
 
 # Timesteps per game
-timesteps = 30
+timesteps = 100
 
 # Agent's training algorithm
 algorithm = "ppo"
@@ -54,7 +61,7 @@ algorithm = "ppo"
 workers = 40
 ngpus = 1
 if(laptop):
-    workers = 4
+    workers = 1
     ngpus = 0
 
 # Training parameters
@@ -117,36 +124,31 @@ red_host_actions = (
 
 blue_action_list = blue_lone_actions + list(
     product(blue_host_actions, hostnames))
-
 red_action_list = (
     red_lone_actions
     + list(product(red_network_actions, subnets))
     + list(product(red_host_actions, hostnames)))
 cardiff_action_list = [133, 134, 135, 139, 3, 4, 5, 9, 16, 17, 18, 22, 11, 12, 13, 14, 141, 142, 143, 144,
-                       132, 2, 15, 24, 25, 26, 27] #27 elements
-# print("checking cardiff_action_list: ",cardiff_action_list)
+                       132, 2, 15, 24, 25, 26, 27]
+mindrake_action_list = list(range(145))
 
 # Batch and mini-batchsizes
-b1 = 61440          # original batch size
-mb1 = 3840          # ^
+b1 = 61440
+mb1 = 3840
 
 # Number of actions that red should take in sequence to achieve specific goal
 red_action_sequence = 3
 
 # Number of 'timesteps' red gets to take actions to try and achieve the specific action sequence
-red_action_tries = pow(len(red_action_list),red_action_sequence)
-red_multiplier = 5
+red_action_tries = pow(len(red_action_list),red_action_sequence) #85184
+red_multiplier = 10
 
-b2 = red_action_tries * red_multiplier          # adjusted batch size given red has 38 possible actions; following same scaling as original
-mb_scaler = 10
-mb2 = b2 // mb_scaler                           # ^
+b2 = red_action_tries * red_multiplier
+mb_scaler = 16
+mb2 = b2 // mb_scaler
 
 batch_size = b2
 mini_batch_size = mb2
-
-# print("batch_size: ", batch_size)
-# print("mini_batch_size: ", mini_batch_size)
-# print("rollout_fragment_length: ",int(batch_size/workers))
 
 if(laptop):
     batch_size = 100
@@ -160,7 +162,8 @@ blue_minibatch_size = mini_batch_size
 blue_obs_space = 5*len(hostnames) + timesteps + 1
 red_obs_space = len(hostnames) + 3*len(hostnames) + 2*len(subnets) + 2*len(subnets) + 1 + timesteps + 1
 cardiff_obs_space = 52
-mindrake_obs_space = None
+mindrake_obs_space = spaces.Box(-1.0, 1.0, shape=(54,), dtype=np.float32)
+mindrake_obs_len = 54
 
 # Declare algorithm configurations after hyperparameters are calculated
 
@@ -659,8 +662,6 @@ class CardiffBlueEnv(gym.Env):
 
         # this current action space is a list of numbers (most likely enums from the CybORG action space)
         self.action_space = Discrete(len(cardiff_action_list))
-        # print("self.action_space is ", self.action_space)
-
         self.observation_space = Discrete(cardiff_obs_space)                                    # CHANGE
 
         # create a CybORG environment with no agents (neither agent will be controlled by the environment)
@@ -733,10 +734,10 @@ class MindrakeBlueEnv(gym.Env):
         # self.action_space = Discrete(len(blue_action_list))                                   # CHANGE
 
         # this current action space is a list of numbers (most likely enums from the CybORG action space)
-        self.action_space = Discrete(len(cardiff_action_list))
-        # print("self.action_space is ", self.action_space)
-
-        self.observation_space = Discrete(cardiff_obs_space)                                    # CHANGE
+        self.action_space = Discrete(len(mindrake_action_list))
+        
+        # self.observation_space = mindrake_obs_space                                    # CHANGE
+        self.observation_space = MultiBinary(mindrake_obs_len)
 
         # create a CybORG environment with no agents (neither agent will be controlled by the environment)
         cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
@@ -1041,19 +1042,69 @@ class _DedicatedRedEnv_vs_cardiff(gym.Env):
 
         return (obs, reward, done, info)
 
-def cardiff_wrap(env):
-    return ChallengeWrapper2(env=env, agent_name='Blue')
+# NEED TO UPDATE for 'mindrake' agent!
+class _DedicatedRedEnv_vs_mindrake(gym.Env):
+    def __init__(self, env_config):
 
-def mindrake_wrap(config):
-    return CybORGActionAgent(config)
+        self.name = "red_env"
+
+        # max timesteps per episode
+        self.max_t = timesteps
+
+        # define the red action and observation spaces as gym objects
+        self.action_space = Discrete(len(red_action_list))
+        self.observation_space = MultiBinary(red_obs_space)
+
+        # create a CybORG environment with no agents (neither agent will be controlled by the environment)
+        cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+        
+        # wrapper to accept red and blue actions, and return red observations
+        self.cyborg = CompetitiveWrapper(turns=timesteps, env=cyborg, output_mode="vector")
+
+        # copy of a config for the Blue opponent
+        self.blue_opponent = MainAgent()
+
+    def reset(self):
+
+        self.blue_opponent = MainAgent()
+        self.blue_obs, obs = self.cyborg.reset(cardiff=True)
+        return obs
+
+    # the step function should receive a red action
+    # the blue action will be chosen within the step function
+    def step(self, action, verbose=False):
+
+        # modified for cardiff
+        blue_action = self.blue_opponent.get_action(self.blue_obs)
+
+        # advance to the new state
+        state = self.cyborg.step(
+            red_action=action,
+            blue_action=blue_action,
+            cardiff=True
+        )
+
+        # red reward and new observation
+        obs = state.red_observation
+        reward = -state.reward # reward signal is flipped here for the red agent
+
+        self.blue_obs = state.blue_observation
+  
+        # episode is done if last timestep has been reached
+        done = False
+        if self.cyborg.turn == self.cyborg.turns_per_game:
+
+            # based on this logic we won't have to worry about
+            # setting back cardiff's inital actions because it get's handled
+            # in reset()
+            done = True
+        
+        info = {}
+
+        return (obs, reward, done, info)
+# NEED TO UPDATE for 'mindrake' agent!
 
 def build_cardiff_agent():
-
-    # register cardiff environment
-    # print("creating the blue cardiff agent!")
-
-    # remove later - for testing purposes
-    # CardiffBlueEnv(env_config={"name": f"{experiment_name}_cardiff_blue"})
     
     select_env = "CardiffBlueEnv"
     register_env(
@@ -1141,7 +1192,7 @@ def build_blue_agent(fresh, opponent=False, dedicated=False):
             path_file.close() 
     return blue_agent
 
-def build_red_agent(fresh, opponent=False, dedicated=False, vs_cardiff=False):
+def build_red_agent(fresh, opponent=False, dedicated=False, vs_cardiff=False, vs_mindrake=False):
     # register the custom environment
     if vs_cardiff:
         select_env = "DedicatedRedEnv_vs_cardiff"
@@ -1149,6 +1200,14 @@ def build_red_agent(fresh, opponent=False, dedicated=False, vs_cardiff=False):
             select_env,
             lambda config: DedicatedRedEnv_vs_cardiff(
                 env_config={"name": f"{experiment_name}_DedicatedRedEnv_vs_cardiff"}
+            )
+        )
+    elif vs_mindrake:
+        select_env = "DedicatedRedEnv_vs_mindrake"
+        register_env(
+            select_env,
+            lambda config: DedicatedRedEnv_vs_mindrake(
+                env_config={"name": f"{experiment_name}_DedicatedRedEnv_vs_mindrake"}
             )
         )
     elif dedicated:
@@ -1321,12 +1380,25 @@ def sample(test_red, test_blue, games=1, verbose=False, show_policy=False, blue_
     
     return(avg_score)
 
-def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
+def sample_against_cardiff(test_red, test_blue, games=1, verbose=False, time=timesteps):
+
+    # Code to save game interactions if 'games' folder does not exist #
+    # Create a folder to save trial games against mindrake at a specific timestep
+    game_log_folder = 'games'
+    if os.path.exists(game_log_folder):
+        pass
+    else:
+        os.makedirs(game_log_folder)
+    if os.path.exists(os.path.join(game_log_folder,'cardiff',str(time))):
+        # Clear the old log and create a new one
+        shutil.rmtree(os.path.join(game_log_folder,'cardiff',str(time)))
+    os.makedirs(os.path.join(game_log_folder,'cardiff',str(time)))
+    # Code to save game interactions if 'games' folder does not exist #
 
     base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
     
     # wrapper to accept red and blue actions, and return observations
-    cyborg = CompetitiveWrapper(env=base_cyborg, turns=timesteps, output_mode="vector")
+    cyborg = CompetitiveWrapper(env=base_cyborg, turns=time, output_mode="vector")
 
     scores = []
     max_score = 0
@@ -1342,9 +1414,33 @@ def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
         if verbose and (games>1):
             print(f"-------- Game {g+1} --------")
 
-        for t in range(timesteps):
-            blue_action = test_blue.get_action(blue_obs)
+        for t in range(time):
+
+            # Set game log file with initial red observation
+            if t == 0:
+                # Grab initial red observation
+                file = os.path.join(os.getcwd(),game_log_folder,"cardiff",str(time),str(g))
+                original_stdout = sys.stdout
+                try:
+                    with open(file, 'a') as file:
+                        true_state = cyborg.get_agent_state('True')
+                        true_table = true_obs_to_table(true_state,cyborg)
+                        sys.stdout = file
+                        print(f"Initial Observation")
+                        print(true_table)
+                        print("\n\n")
+                finally:
+                    # Restore original stdout no matter what
+                    sys.stdout = original_stdout
+
+            blue_action, agent_to_select = test_blue.get_action(blue_obs)
             red_action, _, red_extras = test_red.compute_single_action(red_obs, full_fetch=True)
+            if agent_to_select == 0:
+                agent_to_select = 'Meander'
+            elif agent_to_select == 1:
+                agent_to_select = 'BLine'
+            else:
+                agent_to_select = 'Sleep'
 
             state = cyborg.step(red_action, blue_action, cardiff=True)
             red_reward = -state.reward
@@ -1353,10 +1449,30 @@ def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
 
             score += red_reward
 
+            # Update the game log file
+            file = os.path.join(os.getcwd(),game_log_folder,"cardiff",str(time),str(g))
+            original_stdout = sys.stdout
+
+            try:
+                with open(file, 'a') as file:
+                    true_state = cyborg.get_agent_state('True')
+                    true_table = true_obs_to_table(true_state,cyborg)
+                    sys.stdout = file
+                    print(f"Step{' ' * 7}\t:{' ' * 2}{t}")
+                    print("Blu def.   \t: ",str(agent_to_select))
+                    print("Blu last action : ",str(cyborg.get_last_action('Blue')))
+                    print("Red last action : ",str(cyborg.get_last_action('Red')))
+                    print(true_table)
+                    print("Red reward\t:",red_reward)
+                    print("Total reward\t:",score)
+                    print("\n\n")
+            finally:
+                sys.stdout = original_stdout
+
             if verbose:
                 print(f'---- Turn {t+1} ----')
                 # Cardiff actions are deterministic not stochastic!
-                print(f"Blue selects {blue_action_list[cyborg.convert_blue_action(blue_action)]} with probability {1*100:0.2f}%")
+                print(f"Blue selects {blue_action_list[cyborg.convert_blue_action(blue_action,cardiff=True)]} with probability {1*100:0.2f}%")
                 print()
                 print(f"Red selects {red_action_list[red_action]} with probability {red_extras['action_prob']*100:0.2f}%")
                 print()
@@ -1375,11 +1491,178 @@ def sample_against_cardiff(test_red, test_blue, games=1, verbose=False):
             min_score = score
     
     avg_score = mean(scores)
+
+    # Find minimum and maximum along with their indices
+    min_value, min_index = min((val, idx) for idx, val in enumerate(scores))
+    max_value, max_index = max((val, idx) for idx, val in enumerate(scores))
+    print("\n\nvs_cardiff")
+    print(f'Total games played is {games}')
+    print(f'Timestpes per game is {time}')
+    print(f'Avg reward is {avg_score}')
+    print(f'Min reward is {min_value} at Game {min_index}')
+    print(f'Max reward is {max_value} at Game {max_index}')
+    print(f'Standard deviation of {stdev(scores)}\n\n')
+
+    # Add the logged information into the game's log file
+    file = os.path.join(os.getcwd(),game_log_folder,"cardiff",str(time),"_log")
+    with open(file, 'w') as file:
+        file.write(f'vs_cardiff\n')
+        file.write(f'Total games played is {games}\n')
+        file.write(f'Timestpes per game is {time}\n')
+        file.write(f'Avg reward is {avg_score}\n')
+        file.write(f'Min reward is {min_value} at Game {min_index}\n')
+        file.write(f'Max reward is {max_value} at Game {max_index}\n')
+        file.write(f'Standard deviation of {stdev(scores)}\n')
+
     if verbose and (games>1):
         print(f'Average Score for {games} Games is {avg_score}')
         print(f'High Score is {max_score}')
         print(f'Low Score is {min_score}')
     
+    return(avg_score)
+
+def sample_against_mindrake(test_red, test_blue, games=1, verbose=False, time=timesteps):
+
+    # Code to save game interactions if 'games' folder does not exist #
+    # Create a folder to save trial games against mindrake at a specific timestep
+    game_log_folder = 'games'
+    if os.path.exists(game_log_folder):
+        pass
+    else:
+        os.makedirs(game_log_folder)
+    # Clear the old log and create a new one
+    if os.path.exists(os.path.join(game_log_folder,'mindrake',str(time))):
+        shutil.rmtree(os.path.join(game_log_folder,'mindrake',str(time)))
+    os.makedirs(os.path.join(game_log_folder,'mindrake',str(time)))
+    # Code to save game interactions if 'games' folder does not exist #
+
+    base_cyborg = CybORG(scenario_file="./scenario.yaml", environment="sim", agents=None)
+    
+    # wrapper to accept red and blue actions, and return observations
+    cyborg = CompetitiveWrapper(env=base_cyborg, turns=time, output_mode="vector")
+
+    scores = []
+    max_score = 0
+    min_score = float('inf')
+
+    for g in range(games):
+
+        # the blue_obs given by 'cyborg.reset()' is not the same as the one given by default cyborg's reset()
+        blue_obs, red_obs = cyborg.reset(mindrake=True)
+        test_blue.end_episode()
+        score = 0
+
+        # print("score is 0")
+        # print("reward is 0")
+
+        if verbose and (games>1):
+            print(f"-------- Game {g+1} --------")
+
+        for t in range(time):
+
+            # Set game log file with initial red observation
+            if t == 0:
+                # Grab initial red observation
+                file = os.path.join(os.getcwd(),game_log_folder,"mindrake",str(time),str(g))
+                original_stdout = sys.stdout
+                try:
+                    with open(file, 'a') as file:
+                        true_state = cyborg.get_agent_state('True')
+                        true_table = true_obs_to_table(true_state,cyborg)
+                        sys.stdout = file
+                        print(f"Initial Observation")
+                        print(true_table)
+                        print("\n\n")
+                finally:
+                    # Restore original stdout no matter what
+                    sys.stdout = original_stdout
+
+            blue_action, agent_to_select = test_blue.get_action(blue_obs,len(mindrake_action_list))
+            red_action, _, red_extras = test_red.compute_single_action(red_obs, full_fetch=True)
+            if agent_to_select == 0:
+                agent_to_select = 'Meander'
+            elif agent_to_select == 1:
+                agent_to_select = 'BLine'
+            else:
+                agent_to_select = 'Sleep'
+
+            state = cyborg.step(red_action, blue_action, mindrake=True)
+            red_reward = -state.reward
+            blue_obs = state.blue_observation
+            red_obs = state.red_observation
+            score += red_reward
+
+            # Update the game log file
+            file = os.path.join(os.getcwd(),game_log_folder,"mindrake",str(time),str(g))
+            original_stdout = sys.stdout
+
+            try:
+                with open(file, 'a') as file:
+                    true_state = cyborg.get_agent_state('True')
+                    true_table = true_obs_to_table(true_state,cyborg)
+                    sys.stdout = file
+                    print(f"Step{' ' * 7}\t:{' ' * 2}{t}")
+                    print("Blu def.   \t: ",str(agent_to_select))
+                    print("Blu last action : ",str(cyborg.get_last_action('Blue')))
+                    print("Red last action : ",str(cyborg.get_last_action('Red')))
+                    print(true_table)
+                    print("Red reward\t:",red_reward)
+                    print("Total reward\t:",score)
+                    print("\n\n")
+            finally:
+                sys.stdout = original_stdout
+
+            if verbose:
+                print(f'---- Turn {t+1} ----')
+                # Cardiff actions are deterministic not stochastic! *** NEED UPDATE FOR MINDRAKE HERE ***
+                print(f"Blue selects {blue_action_list[cyborg.convert_blue_action(blue_action,mindrake=True)]} with probability {1*100:0.2f}%")
+                print()
+                print(f"Red selects {red_action_list[red_action]} with probability {red_extras['action_prob']*100:0.2f}%")
+                print()
+                # print(f'New Red observation: {red_obs}')
+                print(f'New Red observation: ')
+                print(cyborg._create_red_table())
+                print()
+                print(f"Reward: +{red_reward:0.1f}")
+                print(f"Score: {score:0.1f}")
+                print()
+
+        # print(f"game {g} score {score}")
+        scores.append(score)
+        if score > max_score:
+            max_score = score
+        if score < min_score:
+            min_score = score
+    
+    avg_score = mean(scores)
+    
+    # Find minimum and maximum along with their indices
+    min_value, min_index = min((val, idx) for idx, val in enumerate(scores))
+    max_value, max_index = max((val, idx) for idx, val in enumerate(scores))
+    print("\n\nvs_mindrake")
+    print(f'Total games played is {games}')
+    print(f'Timestpes per game is {time}')
+    print(f'Avg reward is {avg_score}')
+    print(f'Min reward is {min_value} at Game {min_index}')
+    print(f'Max reward is {max_value} at Game {max_index}')
+    print(f'Standard deviation of {stdev(scores)}\n\n')
+
+    # Add the logged information into the game's log file
+    file = os.path.join(os.getcwd(),game_log_folder,"mindrake",str(time),"_log")
+    with open(file, 'w') as file:
+        file.write(f'vs_mindrake\n')
+        file.write(f'Total games played is {games}\n')
+        file.write(f'Timestpes per game is {time}\n')
+        file.write(f'Avg reward is {avg_score}\n')
+        file.write(f'Min reward is {min_value} at Game {min_index}\n')
+        file.write(f'Max reward is {max_value} at Game {max_index}\n')
+        file.write(f'Standard deviation of {stdev(scores)}\n')
+
+    if verbose and (games>1):
+        print(f'Average Score for {games} Games is {avg_score}')
+        print(f'High Score is {max_score}')
+        print(f'Low Score is {min_score}')
+
     return(avg_score)
 
 def run_algorithm(config, env, algorithm_select):

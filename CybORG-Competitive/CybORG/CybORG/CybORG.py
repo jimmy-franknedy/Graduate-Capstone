@@ -158,6 +158,7 @@ class CybORG (CybORGLogger):
         return self.environment_controller.get_agent_state(agent_name).data
 
     def reset(self, agent: str = None) -> Results:
+
         """
         Resets CybORG and gets initial observation and action-space for the specified agent.
 
