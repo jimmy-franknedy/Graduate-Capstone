@@ -1,0 +1,48 @@
+vs_mindrake
+Total games played is 1000
+Total time is 00:31:16
+Timestpes per game is 50
+Avg reward is -15.355200000000002
+Min reward is -43.70000000000002 at Game 909
+Max reward is -4.699999999999999 at Game 988
+Standard deviation of 7.8232100556980875
+Total number of states_encountered is 64
+Total number of unique actions taken is 37/145
+
+called 116	times -	('Analyse', 'Enterprise1')
+called 244	times -	('Analyse', 'Op_Server0')
+called 4	times -	('Analyse', 'User4')
+called 1291	times -	('Remove', 'Op_Server0')
+called 1305	times -	('Remove', 'User3')
+called 1036	times -	('DecoyApache', 'Enterprise0')
+called 2379	times -	('DecoyApache', 'Op_Host0')
+called 20	times -	('DecoyApache', 'User2')
+called 239	times -	('DecoyFemitter', 'Enterprise0')
+called 3988	times -	('DecoyFemitter', 'Enterprise1')
+called 1748	times -	('DecoyFemitter', 'Enterprise2')
+called 2875	times -	('DecoyHarakaSMPT', 'Defender')
+called 1502	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 284	times -	('DecoyHarakaSMPT', 'Op_Host0')
+called 6798	times -	('DecoyHarakaSMPT', 'Op_Server0')
+called 927	times -	('DecoyHarakaSMPT', 'User4')
+called 4501	times -	('DecoySmss', 'Enterprise1')
+called 99	times -	('DecoySmss', 'User1')
+called 385	times -	('DecoySmss', 'User3')
+called 1342	times -	('DecoySSHD', 'Enterprise0')
+called 29	times -	('DecoySSHD', 'Enterprise2')
+called 18	times -	('DecoySSHD', 'User1')
+called 7	times -	('DecoySvchost', 'Enterprise0')
+called 74	times -	('DecoySvchost', 'Enterprise1')
+called 1138	times -	('DecoyTomcat', 'Enterprise0')
+called 271	times -	('DecoyTomcat', 'Op_Host1')
+called 1873	times -	('DecoyTomcat', 'Op_Host2')
+called 2140	times -	('DecoyTomcat', 'Op_Server0')
+called 1799	times -	('DecoyTomcat', 'User1')
+called 40	times -	('DecoyTomcat', 'User2')
+called 2046	times -	('DecoyVsftpd', 'Defender')
+called 3710	times -	('Restore', 'Enterprise0')
+called 5264	times -	('Restore', 'Enterprise1')
+called 33	times -	('Restore', 'Enterprise2')
+called 4	times -	('Restore', 'Op_Server0')
+called 22	times -	('Restore', 'User2')
+called 449	times -	('Restore', 'User3')

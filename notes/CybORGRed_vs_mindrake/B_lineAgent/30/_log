@@ -1,0 +1,48 @@
+vs_mindrake
+Total games played is 1000
+Total time is 00:22:39
+Timestpes per game is 30
+Avg reward is -7.127799999999999
+Min reward is -56.7 at Game 585
+Max reward is -2.700000000000001 at Game 995
+Standard deviation of 4.274606346720058
+Total number of states_encountered is 69
+Total number of unique actions taken is 37/145
+
+called 104	times -	('Analyse', 'Enterprise1')
+called 239	times -	('Analyse', 'Op_Server0')
+called 1114	times -	('Remove', 'Op_Server0')
+called 999	times -	('Remove', 'User3')
+called 867	times -	('DecoyApache', 'Enterprise0')
+called 1113	times -	('DecoyApache', 'Op_Host0')
+called 25	times -	('DecoyApache', 'User2')
+called 271	times -	('DecoyFemitter', 'Enterprise0')
+called 2066	times -	('DecoyFemitter', 'Enterprise1')
+called 1570	times -	('DecoyFemitter', 'Enterprise2')
+called 1196	times -	('DecoyHarakaSMPT', 'Defender')
+called 1473	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 262	times -	('DecoyHarakaSMPT', 'Op_Host0')
+called 4555	times -	('DecoyHarakaSMPT', 'Op_Server0')
+called 639	times -	('DecoyHarakaSMPT', 'User4')
+called 1999	times -	('DecoySmss', 'Enterprise1')
+called 55	times -	('DecoySmss', 'User1')
+called 266	times -	('DecoySmss', 'User3')
+called 1064	times -	('DecoySSHD', 'Enterprise0')
+called 24	times -	('DecoySSHD', 'Enterprise2')
+called 12	times -	('DecoySSHD', 'User1')
+called 6	times -	('DecoySvchost', 'Enterprise0')
+called 28	times -	('DecoySvchost', 'Enterprise1')
+called 753	times -	('DecoyTomcat', 'Enterprise0')
+called 244	times -	('DecoyTomcat', 'Op_Host1')
+called 1384	times -	('DecoyTomcat', 'Op_Host2')
+called 1181	times -	('DecoyTomcat', 'Op_Server0')
+called 1240	times -	('DecoyTomcat', 'User1')
+called 53	times -	('DecoyTomcat', 'User2')
+called 1	times -	('DecoyTomcat', 'User3')
+called 1356	times -	('DecoyVsftpd', 'Defender')
+called 1245	times -	('Restore', 'Enterprise0')
+called 2166	times -	('Restore', 'Enterprise1')
+called 13	times -	('Restore', 'Enterprise2')
+called 2	times -	('Restore', 'Op_Host1')
+called 6	times -	('Restore', 'User2')
+called 409	times -	('Restore', 'User3')

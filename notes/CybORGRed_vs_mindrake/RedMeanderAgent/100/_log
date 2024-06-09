@@ -1,0 +1,42 @@
+vs_mindrake
+Total games played is 1000
+Total time is 00:31:05
+Timestpes per game is 100
+Avg reward is -17.495200000000004
+Min reward is -33.800000000000054 at Game 239
+Max reward is -6.6000000000000005 at Game 881
+Standard deviation of 3.9982574983388792
+Total number of states_encountered is 236
+Total number of unique actions taken is 31/145
+
+called 3697	times -	('Analyse', 'Defender')
+called 7381	times -	('Analyse', 'Enterprise1')
+called 331	times -	('Analyse', 'Op_Server0')
+called 2807	times -	('Analyse', 'User0')
+called 1570	times -	('Analyse', 'User1')
+called 40	times -	('Analyse', 'User2')
+called 1822	times -	('Analyse', 'User3')
+called 11	times -	('Remove', 'Op_Host2')
+called 638	times -	('DecoyApache', 'Enterprise0')
+called 1076	times -	('DecoyFemitter', 'Enterprise0')
+called 2463	times -	('DecoyFemitter', 'Enterprise1')
+called 3386	times -	('DecoyFemitter', 'Enterprise2')
+called 2848	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 343	times -	('DecoyHarakaSMPT', 'Op_Host0')
+called 10503	times -	('DecoySmss', 'Op_Host0')
+called 14010	times -	('DecoySmss', 'Op_Server0')
+called 47	times -	('DecoySmss', 'User3')
+called 37	times -	('DecoySSHD', 'Enterprise0')
+called 4145	times -	('DecoySSHD', 'Enterprise1')
+called 1628	times -	('DecoySvchost', 'User3')
+called 1326	times -	('DecoyTomcat', 'Enterprise0')
+called 4055	times -	('DecoyTomcat', 'User2')
+called 23007	times -	('DecoyVsftpd', 'User1')
+called 2071	times -	('Restore', 'Enterprise0')
+called 3835	times -	('Restore', 'Enterprise1')
+called 2989	times -	('Restore', 'Enterprise2')
+called 30	times -	('Restore', 'Op_Server0')
+called 986	times -	('Restore', 'User1')
+called 967	times -	('Restore', 'User2')
+called 999	times -	('Restore', 'User3')
+called 952	times -	('Restore', 'User4')

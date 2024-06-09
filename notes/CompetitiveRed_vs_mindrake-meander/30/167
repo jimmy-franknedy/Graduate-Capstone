@@ -1,0 +1,801 @@
+Initial Observation
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+
+
+
+Step       	:  0
+Blu def.   	:  BLine
+Blu action 	:  DecoyFemitter Enterprise2
+Red action 	:  DiscoverRemoteSystems 10.0.45.112/28
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  1
+Blu def.   	:  BLine
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  DiscoverNetworkServices 10.0.45.124
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |   True  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  2
+Blu def.   	:  BLine
+Blu action 	:  DecoyFemitter Enterprise1
+Red action 	:  DiscoverNetworkServices 10.0.45.126
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |   True  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  3
+Blu def.   	:  BLine
+Blu action 	:  Analyse Op_Server0
+Red action 	:  ExploitRemoteService 10.0.45.124
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 0.1
+
+
+
+Step       	:  4
+Blu def.   	:  Meander
+Blu action 	:  Analyse User3
+Red action 	:  ExploitRemoteService 10.0.45.126
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  | Privileged |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 0.30000000000000004
+
+
+
+Step       	:  5
+Blu def.   	:  Meander
+Blu action 	:  DecoyFemitter Enterprise2
+Red action 	:  PrivilegeEscalate User1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  | Privileged |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 0.5
+
+
+
+Step       	:  6
+Blu def.   	:  Meander
+Blu action 	:  Restore User1
+Red action 	:  DiscoverNetworkServices 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |   True  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  | Privileged |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.1
+Total reward	: 1.6
+
+
+
+Step       	:  7
+Blu def.   	:  Meander
+Blu action 	:  Analyse Enterprise1
+Red action 	:  DiscoverNetworkServices 10.0.45.115
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |   True  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  | Privileged |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 1.7000000000000002
+
+
+
+Step       	:  8
+Blu def.   	:  Meander
+Blu action 	:  DecoyFemitter Enterprise2
+Red action 	:  ExploitRemoteService 10.0.45.115
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  | Privileged |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 1.9000000000000001
+
+
+
+Step       	:  9
+Blu def.   	:  Meander
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.1
+Total reward	: 3.0
+
+
+
+Step       	:  10
+Blu def.   	:  Meander
+Blu action 	:  Restore User3
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.0
+Total reward	: 4.0
+
+
+
+Step       	:  11
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  12
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  13
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  14
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  15
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  16
+Blu def.   	:  Meander
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  DiscoverNetworkServices 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |   True  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  17
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  18
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  19
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  DiscoverNetworkServices 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |   True  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  20
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  DiscoverNetworkServices 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |   True  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  21
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  22
+Blu def.   	:  Meander
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  23
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  24
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  25
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  26
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  ExploitRemoteService 10.0.249.194
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  27
+Blu def.   	:  Meander
+Blu action 	:  Analyse User0
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  28
+Blu def.   	:  Meander
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+
+Step       	:  29
+Blu def.   	:  Meander
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.249.192/28 | 10.0.249.206 |   Defender  | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.202 | Enterprise0 | False |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.194 | Enterprise1 |  True |  False  |    None    |
+| 10.0.249.192/28 | 10.0.249.201 | Enterprise2 | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.13  |   Op_Host0  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.2  |   Op_Host1  | False |  False  |    None    |
+|  10.0.210.0/28  |  10.0.210.1  |   Op_Host2  | False |  False  |    None    |
+|  10.0.210.0/28  | 10.0.210.11  |  Op_Server0 | False |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.120  |    User0    |  True |  False  | Privileged |
+|  10.0.45.112/28 | 10.0.45.124  |    User1    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.122  |    User2    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.115  |    User3    |  True |  False  |    None    |
+|  10.0.45.112/28 | 10.0.45.126  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 4.0
+
+
+

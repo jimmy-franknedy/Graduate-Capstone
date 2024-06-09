@@ -1,0 +1,81 @@
+vs_mindrake
+Total time is 00:21:32
+Total games played is 1000
+Timestpes per game is 30
+BLine defense (633/1000) % is 63.3
+Meander defense (367/1000) % is 36.7
+Bline defense average reward is 19.7
+Meander defense average reward is 11.482016348773842
+Standard deviation of Bline defense reward is 7.549823956368248
+Standard deviation of Bline defense reward is 4.072854729793982
+Avg reward is 16.684
+Min reward is 3.3000000000000003 at Game 197
+Max reward is 46.69999999999999 at Game 316
+Standard deviation of 7.605405063912519
+
+Total number of states_encountered is 364
+BLine Action Count 45/145
+called 32	times -	('Analyse', 'Enterprise1')
+called 458	times -	('Analyse', 'Op_Server0')
+called 50	times -	('Analyse', 'User0')
+called 7	times -	('Analyse', 'User1')
+called 10	times -	('Analyse', 'User3')
+called 29	times -	('Analyse', 'User4')
+called 13	times -	('Remove', 'Enterprise0')
+called 8	times -	('Remove', 'User3')
+called 109	times -	('DecoyApache', 'Enterprise0')
+called 100	times -	('DecoyApache', 'Op_Host0')
+called 327	times -	('DecoyApache', 'Op_Host2')
+called 1143	times -	('DecoyFemitter', 'Enterprise0')
+called 916	times -	('DecoyFemitter', 'Enterprise1')
+called 1141	times -	('DecoyFemitter', 'Enterprise2')
+called 3386	times -	('DecoyHarakaSMPT', 'Defender')
+called 1016	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 1	times -	('DecoyHarakaSMPT', 'Enterprise1')
+called 231	times -	('DecoyHarakaSMPT', 'Enterprise2')
+called 231	times -	('DecoyHarakaSMPT', 'Op_Host0')
+called 2682	times -	('DecoyHarakaSMPT', 'Op_Server0')
+called 95	times -	('DecoyHarakaSMPT', 'User4')
+called 1	times -	('DecoySmss', 'Enterprise1')
+called 168	times -	('DecoySmss', 'User0')
+called 3	times -	('DecoySmss', 'User1')
+called 10	times -	('DecoySmss', 'User3')
+called 12	times -	('DecoySSHD', 'Enterprise0')
+called 217	times -	('DecoySSHD', 'User0')
+called 26	times -	('DecoySSHD', 'User3')
+called 300	times -	('DecoySvchost', 'Enterprise1')
+called 7	times -	('DecoySvchost', 'Op_Host0')
+called 316	times -	('DecoySvchost', 'User0')
+called 74	times -	('DecoySvchost', 'User1')
+called 833	times -	('DecoyTomcat', 'Enterprise0')
+called 266	times -	('DecoyTomcat', 'Op_Host2')
+called 835	times -	('DecoyTomcat', 'Op_Server0')
+called 8	times -	('DecoyTomcat', 'User2')
+called 213	times -	('DecoyTomcat', 'User3')
+called 1	times -	('DecoyVsftpd', 'Defender')
+called 1	times -	('DecoyVsftpd', 'Op_Server0')
+called 9	times -	('Restore', 'Defender')
+called 1	times -	('Restore', 'Enterprise0')
+called 3509	times -	('Restore', 'Enterprise1')
+called 23	times -	('Restore', 'Op_Host1')
+called 101	times -	('Restore', 'User3')
+called 1539	times -	('Restore', 'User4')
+
+Meander Action Count 12/145
+called 495	times -	('Analyse', 'Enterprise1')
+called 1685	times -	('Analyse', 'User0')
+called 372	times -	('Analyse', 'User3')
+called 297	times -	('DecoyFemitter', 'Enterprise1')
+called 867	times -	('DecoyFemitter', 'Enterprise2')
+called 2741	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 124	times -	('DecoyTomcat', 'Enterprise0')
+called 1575	times -	('Restore', 'Enterprise1')
+called 418	times -	('Restore', 'User1')
+called 159	times -	('Restore', 'User2')
+called 407	times -	('Restore', 'User3')
+called 402	times -	('Restore', 'User4')
+
+Total number of games that encountered unknown_obs is 2
+Total number of unknown_obs encountered is 52
+Game 112 encountered 26 unknown_obs
+Game 490 encountered 26 unknown_obs

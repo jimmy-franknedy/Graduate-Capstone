@@ -1,0 +1,1321 @@
+Initial Observation
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    | False |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+
+
+
+Step       	:  0
+Blu def.   	:  BLine
+Blu action 	:  DecoyFemitter Enterprise2
+Red action 	:  DiscoverRemoteSystems 10.0.75.128/28
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  1
+Blu def.   	:  BLine
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  DiscoverNetworkServices 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |   True  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  2
+Blu def.   	:  BLine
+Blu action 	:  Analyse Op_Server0
+Red action 	:  ExploitRemoteService 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 0.1
+
+
+
+Step       	:  3
+Blu def.   	:  BLine
+Blu action 	:  DecoyApache Enterprise0
+Red action 	:  DiscoverNetworkServices 10.0.75.136
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |   True  |    None    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 0.2
+
+
+
+Step       	:  4
+Blu def.   	:  BLine
+Blu action 	:  DecoyTomcat Enterprise0
+Red action 	:  ExploitRemoteService 10.0.75.136
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  |    User    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 0.30000000000000004
+
+
+
+Step       	:  5
+Blu def.   	:  BLine
+Blu action 	:  DecoyTomcat Op_Server0
+Red action 	:  DiscoverNetworkServices 10.0.75.129
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  |    User    |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |   True  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.1
+Total reward	: 0.4
+
+
+
+Step       	:  6
+Blu def.   	:  BLine
+Blu action 	:  DecoySvchost User0
+Red action 	:  PrivilegeEscalate User1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 0.6000000000000001
+
+
+
+Step       	:  7
+Blu def.   	:  BLine
+Blu action 	:  DecoyApache Op_Host2
+Red action 	:  ExploitRemoteService 10.0.75.129
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 0.8
+
+
+
+Step       	:  8
+Blu def.   	:  BLine
+Blu action 	:  DecoyApache Op_Host2
+Red action 	:  DiscoverNetworkServices 10.0.130.108
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |   True  |    None    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.2
+Total reward	: 1.0
+
+
+
+Step       	:  9
+Blu def.   	:  BLine
+Blu action 	:  Restore Enterprise1
+Red action 	:  ExploitRemoteService 10.0.130.108
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  |    User    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.2
+Total reward	: 2.2
+
+
+
+Step       	:  10
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.75.129
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  |    User    |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.2
+Total reward	: 3.4000000000000004
+
+
+
+Step       	:  11
+Blu def.   	:  BLine
+Blu action 	:  DecoySvchost User0
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.2
+Total reward	: 4.6000000000000005
+
+
+
+Step       	:  12
+Blu def.   	:  BLine
+Blu action 	:  Analyse User0
+Red action 	:  DiscoverNetworkServices 10.0.130.108
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |   True  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 1.2
+Total reward	: 5.800000000000001
+
+
+
+Step       	:  13
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate User3
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 8.0
+
+
+
+Step       	:  14
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 10.2
+
+
+
+Step       	:  15
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 12.399999999999999
+
+
+
+Step       	:  16
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    User    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 14.599999999999998
+
+
+
+Step       	:  17
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 16.799999999999997
+
+
+
+Step       	:  18
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 18.999999999999996
+
+
+
+Step       	:  19
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 21.199999999999996
+
+
+
+Step       	:  20
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.3
+Total reward	: 23.499999999999996
+
+
+
+Step       	:  21
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 25.699999999999996
+
+
+
+Step       	:  22
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 27.899999999999995
+
+
+
+Step       	:  23
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.3
+Total reward	: 30.199999999999996
+
+
+
+Step       	:  24
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 32.4
+
+
+
+Step       	:  25
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 34.6
+
+
+
+Step       	:  26
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 36.800000000000004
+
+
+
+Step       	:  27
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 39.00000000000001
+
+
+
+Step       	:  28
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.130.99
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 41.20000000000001
+
+
+
+Step       	:  29
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 43.40000000000001
+
+
+
+Step       	:  30
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 45.600000000000016
+
+
+
+Step       	:  31
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 47.80000000000002
+
+
+
+Step       	:  32
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 50.00000000000002
+
+
+
+Step       	:  33
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate User3
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 52.200000000000024
+
+
+
+Step       	:  34
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  DiscoverRemoteSystems 10.0.75.128/28
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 54.40000000000003
+
+
+
+Step       	:  35
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 56.60000000000003
+
+
+
+Step       	:  36
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 58.80000000000003
+
+
+
+Step       	:  37
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 61.000000000000036
+
+
+
+Step       	:  38
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 63.20000000000004
+
+
+
+Step       	:  39
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 65.40000000000003
+
+
+
+Step       	:  40
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 67.60000000000004
+
+
+
+Step       	:  41
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate User4
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 69.80000000000004
+
+
+
+Step       	:  42
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  ExploitRemoteService 10.0.75.140
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  | Privileged |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.3
+Total reward	: 72.10000000000004
+
+
+
+Step       	:  43
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 74.30000000000004
+
+
+
+Step       	:  44
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  InvalidAction
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 76.50000000000004
+
+
+
+Step       	:  45
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 78.70000000000005
+
+
+
+Step       	:  46
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 80.90000000000005
+
+
+
+Step       	:  47
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate Enterprise1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 83.10000000000005
+
+
+
+Step       	:  48
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  PrivilegeEscalate User1
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 85.30000000000005
+
+
+
+Step       	:  49
+Blu def.   	:  BLine
+Blu action 	:  Restore User4
+Red action 	:  InvalidAction
++----------------+--------------+-------------+-------+---------+------------+
+|     Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++----------------+--------------+-------------+-------+---------+------------+
+| 10.0.130.96/28 | 10.0.130.103 |   Defender  | False |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.99  | Enterprise0 |  True |  False  |    None    |
+| 10.0.130.96/28 | 10.0.130.108 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.130.96/28 | 10.0.130.107 | Enterprise2 | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.37   |   Op_Host0  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.45   |   Op_Host1  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.41   |   Op_Host2  | False |  False  |    None    |
+|  10.0.9.32/28  |  10.0.9.40   |  Op_Server0 | False |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.139  |    User0    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.136  |    User1    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.135  |    User2    |  True |  False  |    None    |
+| 10.0.75.128/28 | 10.0.75.129  |    User3    |  True |  False  | Privileged |
+| 10.0.75.128/28 | 10.0.75.140  |    User4    |  True |  False  |    None    |
++----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 2.2
+Total reward	: 87.50000000000006
+
+
+

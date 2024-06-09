@@ -1,0 +1,114 @@
+vs_mindrake
+Total time is 01:09:31
+Total games played is 1000
+Timestpes per game is 100
+BLine defense (651/999) % is 65.16516516516516
+Meander defense (348/999) % is 34.83483483483483
+Bline defense average reward is 109.07634408602155
+Meander defense average reward is 50.61321839080461
+Standard deviation of Bline defense reward is 30.858534181721943
+Standard deviation of Bline defense reward is 18.769121983843213
+Avg reward is 88.62210000000003
+Min reward is 0.0 at Game 799
+Max reward is 236.39999999999972 at Game 292
+Standard deviation of 39.060112826309215
+
+Total number of states_encountered is 891
+BLine Action Count 49/145
+called 18	times -	('Analyse', 'Enterprise1')
+called 552	times -	('Analyse', 'Op_Server0')
+called 259	times -	('Analyse', 'User0')
+called 15	times -	('Analyse', 'User3')
+called 38	times -	('Analyse', 'User4')
+called 1	times -	('Remove', 'Enterprise0')
+called 16	times -	('Remove', 'Op_Server0')
+called 9	times -	('Remove', 'User3')
+called 380	times -	('DecoyApache', 'Enterprise0')
+called 329	times -	('DecoyApache', 'Op_Host0')
+called 517	times -	('DecoyApache', 'Op_Host2')
+called 1408	times -	('DecoyFemitter', 'Enterprise0')
+called 636	times -	('DecoyFemitter', 'Enterprise1')
+called 1131	times -	('DecoyFemitter', 'Enterprise2')
+called 20187	times -	('DecoyHarakaSMPT', 'Defender')
+called 1044	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 539	times -	('DecoyHarakaSMPT', 'Enterprise1')
+called 183	times -	('DecoyHarakaSMPT', 'Enterprise2')
+called 315	times -	('DecoyHarakaSMPT', 'Op_Host0')
+called 4993	times -	('DecoyHarakaSMPT', 'Op_Server0')
+called 34	times -	('DecoyHarakaSMPT', 'User4')
+called 1	times -	('DecoySmss', 'Op_Host0')
+called 270	times -	('DecoySmss', 'User0')
+called 1	times -	('DecoySmss', 'User1')
+called 10	times -	('DecoySmss', 'User3')
+called 61	times -	('DecoySSHD', 'Enterprise0')
+called 633	times -	('DecoySSHD', 'User0')
+called 299	times -	('DecoySSHD', 'User3')
+called 19	times -	('DecoySvchost', 'Enterprise0')
+called 220	times -	('DecoySvchost', 'Enterprise1')
+called 7	times -	('DecoySvchost', 'Op_Host0')
+called 1022	times -	('DecoySvchost', 'User0')
+called 60	times -	('DecoySvchost', 'User1')
+called 5601	times -	('DecoyTomcat', 'Enterprise0')
+called 3	times -	('DecoyTomcat', 'Enterprise1')
+called 3591	times -	('DecoyTomcat', 'Op_Host2')
+called 3321	times -	('DecoyTomcat', 'Op_Server0')
+called 1	times -	('DecoyTomcat', 'User2')
+called 1129	times -	('DecoyTomcat', 'User3')
+called 1	times -	('DecoyVsftpd', 'Op_Host2')
+called 4	times -	('DecoyVsftpd', 'Op_Server0')
+called 407	times -	('Restore', 'Defender')
+called 739	times -	('Restore', 'Enterprise0')
+called 8134	times -	('Restore', 'Enterprise1')
+called 270	times -	('Restore', 'Enterprise2')
+called 389	times -	('Restore', 'Op_Host1')
+called 56	times -	('Restore', 'User2')
+called 59	times -	('Restore', 'User3')
+called 7584	times -	('Restore', 'User4')
+
+Meander Action Count 16/145
+called 96	times -	['Sleep']
+called 1263	times -	('Analyse', 'Enterprise1')
+called 3789	times -	('Analyse', 'User0')
+called 1	times -	('Analyse', 'User1')
+called 728	times -	('Analyse', 'User3')
+called 977	times -	('DecoyFemitter', 'Enterprise1')
+called 2090	times -	('DecoyFemitter', 'Enterprise2')
+called 15295	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 414	times -	('DecoyTomcat', 'Enterprise0')
+called 158	times -	('Restore', 'Enterprise0')
+called 5101	times -	('Restore', 'Enterprise1')
+called 284	times -	('Restore', 'Enterprise2')
+called 774	times -	('Restore', 'User1')
+called 582	times -	('Restore', 'User2')
+called 756	times -	('Restore', 'User3')
+called 1196	times -	('Restore', 'User4')
+
+Total number of games that encountered unknown_obs is 27
+Total number of unknown_obs encountered is 2592
+Game 65 encountered 96 unknown_obs
+Game 98 encountered 96 unknown_obs
+Game 131 encountered 96 unknown_obs
+Game 187 encountered 96 unknown_obs
+Game 293 encountered 96 unknown_obs
+Game 295 encountered 96 unknown_obs
+Game 316 encountered 96 unknown_obs
+Game 413 encountered 96 unknown_obs
+Game 499 encountered 96 unknown_obs
+Game 515 encountered 96 unknown_obs
+Game 530 encountered 96 unknown_obs
+Game 565 encountered 96 unknown_obs
+Game 602 encountered 96 unknown_obs
+Game 625 encountered 96 unknown_obs
+Game 736 encountered 96 unknown_obs
+Game 750 encountered 96 unknown_obs
+Game 793 encountered 96 unknown_obs
+Game 801 encountered 96 unknown_obs
+Game 835 encountered 96 unknown_obs
+Game 836 encountered 96 unknown_obs
+Game 852 encountered 96 unknown_obs
+Game 872 encountered 96 unknown_obs
+Game 889 encountered 96 unknown_obs
+Game 891 encountered 96 unknown_obs
+Game 926 encountered 96 unknown_obs
+Game 938 encountered 96 unknown_obs
+Game 989 encountered 96 unknown_obs

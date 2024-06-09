@@ -1,0 +1,801 @@
+Initial Observation
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    | False |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    | False |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+
+
+
+Step       	:  0
+Blu def.   	:  BLine
+Blu action :  DecoyFemitter Enterprise2
+Red action :  DiscoverRemoteSystems 10.0.237.0/28
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.0
+Total reward	: 0.0
+
+
+
+Step       	:  1
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Enterprise0
+Red action :  DiscoverNetworkServices 10.0.237.13
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |   True  |    None    |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.0
+Total reward	: 0.0
+
+
+
+Step       	:  2
+Blu def.   	:  BLine
+Blu action :  DecoyFemitter Enterprise1
+Red action :  ExploitRemoteService 10.0.237.13
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  |    User    |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: 0.0
+Total reward	: 0.0
+
+
+
+Step       	:  3
+Blu def.   	:  BLine
+Blu action :  DecoyTomcat Op_Server0
+Red action :  PrivilegeEscalate User1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -0.1
+
+
+
+Step       	:  4
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverNetworkServices 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |   True  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -0.2
+
+
+
+Step       	:  5
+Blu def.   	:  BLine
+Blu action :  DecoyFemitter Enterprise0
+Red action :  ExploitRemoteService 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    User    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -0.30000000000000004
+
+
+
+Step       	:  6
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  PrivilegeEscalate Enterprise1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 | False |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -1.4000000000000001
+
+
+
+Step       	:  7
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverRemoteSystems 10.0.169.208/28
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -2.5
+
+
+
+Step       	:  8
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverNetworkServices 10.0.169.215
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |   True  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -3.6
+
+
+
+Step       	:  9
+Blu def.   	:  BLine
+Blu action :  Restore Enterprise1
+Red action :  ExploitRemoteService 10.0.169.215
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -4.7
+
+
+
+Step       	:  10
+Blu def.   	:  BLine
+Blu action :  DecoySvchost Enterprise1
+Red action :  ExploitRemoteService 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -4.8
+
+
+
+Step       	:  11
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  ExploitRemoteService 10.0.237.13
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -4.8999999999999995
+
+
+
+Step       	:  12
+Blu def.   	:  BLine
+Blu action :  DecoySSHD Enterprise0
+Red action :  PrivilegeEscalate User1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -4.999999999999999
+
+
+
+Step       	:  13
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverNetworkServices 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |   True  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -5.099999999999999
+
+
+
+Step       	:  14
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  ExploitRemoteService 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    User    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -5.199999999999998
+
+
+
+Step       	:  15
+Blu def.   	:  BLine
+Blu action :  Restore Enterprise1
+Red action :  PrivilegeEscalate Enterprise1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -6.299999999999999
+
+
+
+Step       	:  16
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  ExploitRemoteService 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    User    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -6.399999999999999
+
+
+
+Step       	:  17
+Blu def.   	:  BLine
+Blu action :  Restore Enterprise1
+Red action :  PrivilegeEscalate Enterprise1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -7.499999999999998
+
+
+
+Step       	:  18
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  ExploitRemoteService 10.0.169.222
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    User    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.1
+Total reward	: -7.599999999999998
+
+
+
+Step       	:  19
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  PrivilegeEscalate Enterprise1
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -8.699999999999998
+
+
+
+Step       	:  20
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverRemoteSystems 10.0.169.208/28
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -9.799999999999997
+
+
+
+Step       	:  21
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverNetworkServices 10.0.169.215
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  | Privileged |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |   True  |    None    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -10.899999999999997
+
+
+
+Step       	:  22
+Blu def.   	:  BLine
+Blu action :  Restore Enterprise1
+Red action :  ExploitRemoteService 10.0.169.215
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  |    User    |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 | False |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -11.999999999999996
+
+
+
+Step       	:  23
+Blu def.   	:  BLine
+Blu action :  DecoySvchost Enterprise1
+Red action :  PrivilegeEscalate Enterprise2
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -13.099999999999996
+
+
+
+Step       	:  24
+Blu def.   	:  BLine
+Blu action :  DecoyHarakaSMPT Op_Server0
+Red action :  DiscoverNetworkServices 10.0.79.121
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |   True  |    None    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -1.1
+Total reward	: -14.199999999999996
+
+
+
+Step       	:  25
+Blu def.   	:  BLine
+Blu action :  Restore Enterprise1
+Red action :  ExploitRemoteService 10.0.79.121
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  |    User    |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -2.1
+Total reward	: -16.299999999999997
+
+
+
+Step       	:  26
+Blu def.   	:  BLine
+Blu action :  DecoySvchost Enterprise0
+Red action :  PrivilegeEscalate Op_Server0
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -2.1
+Total reward	: -18.4
+
+
+
+Step       	:  27
+Blu def.   	:  BLine
+Blu action :  Restore Op_Host1
+Red action :  Impact Op_Server0
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -13.1
+Total reward	: -31.5
+
+
+
+Step       	:  28
+Blu def.   	:  BLine
+Blu action :  DecoyTomcat User3
+Red action :  Impact Op_Server0
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -12.1
+Total reward	: -43.6
+
+
+
+Step       	:  29
+Blu def.   	:  BLine
+Blu action :  Restore Op_Host1
+Red action :  Impact Op_Server0
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.169.208/28 | 10.0.169.216 |   Defender  |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.220 | Enterprise0 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.222 | Enterprise1 |  True |  False  |    None    |
+| 10.0.169.208/28 | 10.0.169.215 | Enterprise2 |  True |  False  | Privileged |
+|  10.0.79.112/28 | 10.0.79.123  |   Op_Host0  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.118  |   Op_Host1  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.113  |   Op_Host2  | False |  False  |    None    |
+|  10.0.79.112/28 | 10.0.79.121  |  Op_Server0 |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.11  |    User0    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.13  |    User1    |  True |  False  | Privileged |
+|  10.0.237.0/28  | 10.0.237.12  |    User2    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.9  |    User3    |  True |  False  |    None    |
+|  10.0.237.0/28  |  10.0.237.5  |    User4    |  True |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -13.1
+Total reward	: -56.7
+
+
+

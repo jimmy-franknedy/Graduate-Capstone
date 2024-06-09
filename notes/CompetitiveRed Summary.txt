@@ -1,0 +1,138 @@
+vs_cardiff
+Total time is 00:19:23
+Total games played is 1000
+Timestpes per game is 30
+BLine defense (620/1000) % is 62.0
+Meander defense (380/1000) % is 38.0
+Bline defense average reward is 13.834193548387098
+Meander defense average reward is 9.766315789473683
+Standard deviation of Bline defense reward is 4.624657363507618
+Standard deviation of Meander defense reward is 2.7977416647076847
+Avg reward is 12.288400000000001
+Min reward is 3.4000000000000004 at Game 479
+Max reward is 30.399999999999988 at Game 398
+Standard deviation of 4.485994827191578
+
+vs_cardiff
+Total time is 00:19:43
+Total games played is 1000
+Timestpes per game is 50
+BLine defense (614/1000) % is 61.4
+Meander defense (386/1000) % is 38.6
+Bline defense average reward is 29.51905537459284
+Meander defense average reward is 19.0940414507772
+Standard deviation of Bline defense reward is 8.419274772032178
+Standard deviation of Meander defense reward is 4.372017364105912
+Avg reward is 25.495000000000005
+Min reward is 3.9000000000000004 at Game 851
+Max reward is 55.499999999999964 at Game 716
+Standard deviation of 8.754745031156562
+
+vs_cardiff
+Total time is 01:03:55
+Total games played is 1000
+Timestpes per game is 100
+BLine defense (672/1000) % is 67.2
+Meander defense (328/1000) % is 32.800000000000004
+Bline defense average reward is 67.41145833333329
+Meander defense average reward is 33.097865853658554
+Standard deviation of Bline defense reward is 22.317548439779348
+Standard deviation of Meander defense reward is 7.801216972830531
+Avg reward is 56.156599999999976
+Min reward is 15.5 at Game 957
+Max reward is 155.50000000000003 at Game 980
+Standard deviation of 24.783964197063398
+
+=== Mindrake BLine ===
+
+vs_mindrake
+Total time is 00:21:32
+Total games played is 1000
+Timestpes per game is 30
+BLine defense (633/1000) % is 63.3
+Meander defense (367/1000) % is 36.7
+Bline defense average reward is 19.7
+Meander defense average reward is 11.482016348773842
+Standard deviation of Bline defense reward is 7.549823956368248
+Standard deviation of Bline defense reward is 4.072854729793982
+Avg reward is 16.684
+Min reward is 3.3000000000000003 at Game 197
+Max reward is 46.69999999999999 at Game 316
+Standard deviation of 7.605405063912519
+
+vs_mindrake
+Total time is 00:22:00
+Total games played is 1000
+Timestpes per game is 50
+BLine defense (600/1000) % is 60.0
+Meander defense (400/1000) % is 40.0
+Bline defense average reward is 43.67599999999999
+Meander defense average reward is 23.97125
+Standard deviation of Bline defense reward is 15.139377748033858
+Standard deviation of Bline defense reward is 9.004838489838129
+Avg reward is 35.79409999999999
+Min reward is 6.7 at Game 97
+Max reward is 87.50000000000006 at Game 375
+Standard deviation of 16.22019204016462
+
+vs_mindrake
+Total time is 01:09:31
+Total games played is 1000
+Timestpes per game is 100
+BLine defense (651/999) % is 65.16516516516516
+Meander defense (348/999) % is 34.83483483483483
+Bline defense average reward is 109.07634408602155
+Meander defense average reward is 50.61321839080461
+Standard deviation of Bline defense reward is 30.858534181721943
+Standard deviation of Bline defense reward is 18.769121983843213
+Avg reward is 88.62210000000003
+Min reward is 0.0 at Game 799
+Max reward is 236.39999999999972 at Game 292
+Standard deviation of 39.060112826309215
+
+=== Mindrake Meander ===
+
+vs_mindrake
+Total time is 00:14:43
+Total games played is 1000
+Timestpes per game is 30
+BLine defense (625/1000) % is 62.5
+Meander defense (375/1000) % is 37.5
+Bline defense average reward is 19.94256
+Meander defense average reward is 10.836533333333334
+Standard deviation of Bline defense reward is 7.586951930106292
+Standard deviation of Meander defense reward is 3.81684610028983
+Avg reward is 16.5278
+Min reward is 4.0 at Game 167
+Max reward is 46.69999999999999 at Game 117
+Standard deviation of 7.801429963120189
+
+vs_mindrake
+Total time is 00:27:43
+Total games played is 1000
+Timestpes per game is 50
+BLine defense (612/1000) % is 61.199999999999996
+Meander defense (388/1000) % is 38.800000000000004
+Bline defense average reward is 43.0830065359477
+Meander defense average reward is 23.619329896907217
+Standard deviation of Bline defense reward is 14.663685466814917
+Standard deviation of Meander defense reward is 9.208543531330362
+Avg reward is 35.531099999999995
+Min reward is 7.699999999999999 at Game 289
+Max reward is 85.60000000000007 at Game 616
+Standard deviation of 15.950140744826665
+
+vs_mindrake
+Total time is 00:40:21
+Total games played is 1000
+Timestpes per game is 100
+BLine defense (657/998) % is 65.83166332665331
+Meander defense (341/998) % is 34.168336673346694
+Bline defense average reward is 110.56986301369868
+Meander defense average reward is 51.29648093841644
+Standard deviation of Bline defense reward is 30.845727539656448
+Standard deviation of Meander defense reward is 19.17041959842774
+Avg reward is 90.49630000000003
+Min reward is 21.1 at Game 686
+Max reward is 210.79999999999978 at Game 120
+Standard deviation of 39.43845900080733

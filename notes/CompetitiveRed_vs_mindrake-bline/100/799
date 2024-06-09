@@ -1,0 +1,2621 @@
+Initial Observation
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+
+
+
+Step       	:  0
+Blu def.   	:  BLine
+Blu action 	:  DecoyFemitter Enterprise2
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  1
+Blu def.   	:  BLine
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  2
+Blu def.   	:  BLine
+Blu action 	:  DecoyHarakaSMPT Enterprise0
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  3
+Blu def.   	:  BLine
+Blu action 	:  Analyse Enterprise1
+Red action 	:  DiscoverNetworkServices 10.0.11.93
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |   True  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  4
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  5
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  6
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  7
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  8
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  9
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  10
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  11
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  12
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  13
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  14
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  15
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  16
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  17
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  18
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  19
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  20
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  21
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  22
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  DiscoverNetworkServices 10.0.11.93
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |   True  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  23
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  24
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  25
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  26
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  27
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  28
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  29
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  30
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  31
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  32
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  33
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  34
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  35
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  36
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  37
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  38
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  39
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  40
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  41
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  42
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  43
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  44
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  45
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  46
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  47
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  48
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  49
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  50
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  51
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  52
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  53
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  54
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  55
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  56
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  57
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  58
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  59
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  60
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  61
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  62
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  63
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  64
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  65
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  66
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  67
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  68
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  69
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  70
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  71
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  72
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  73
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  74
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  75
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  76
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  77
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  78
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  79
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  80
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  81
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  82
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  83
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  84
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  85
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  86
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  87
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  88
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  89
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  90
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  91
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  92
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  93
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  94
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  95
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  96
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  97
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  98
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  ExploitRemoteService 10.0.11.93
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+
+Step       	:  99
+Blu def.   	:  Sleep
+Blu action 	:  Sleep
+Red action 	:  InvalidAction
++-----------------+--------------+-------------+-------+---------+------------+
+|      Subnet     |  IP Address  |   Hostname  | Known | Scanned |   Access   |
++-----------------+--------------+-------------+-------+---------+------------+
+| 10.0.243.192/28 | 10.0.243.196 |   Defender  | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.198 | Enterprise0 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.206 | Enterprise1 | False |  False  |    None    |
+| 10.0.243.192/28 | 10.0.243.199 | Enterprise2 | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.180 |   Op_Host0  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.184 |   Op_Host1  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.186 |   Op_Host2  | False |  False  |    None    |
+| 10.0.177.176/28 | 10.0.177.190 |  Op_Server0 | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.93  |    User0    |  True |  False  | Privileged |
+|  10.0.11.80/28  |  10.0.11.89  |    User1    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.85  |    User2    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.90  |    User3    | False |  False  |    None    |
+|  10.0.11.80/28  |  10.0.11.88  |    User4    | False |  False  |    None    |
++-----------------+--------------+-------------+-------+---------+------------+
+Red reward	: -0.0
+Total reward	: 0.0
+
+
+

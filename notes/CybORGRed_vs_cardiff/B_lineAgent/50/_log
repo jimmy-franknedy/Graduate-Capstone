@@ -1,0 +1,42 @@
+vs_cardiff
+Total games played is 1000
+Total time is 00:30:48
+Timestpes per game is 50
+Avg reward is -13.157700000000002
+Min reward is -38.70000000000003 at Game 852
+Max reward is 0.0 at Game 925
+Standard deviation of 8.042023056721792
+
+Total number of states_encountered is 52
+Total number of unique actions taken is 30/145
+
+called 27	times -	('Analyse', 'Enterprise0')
+called 917	times -	('Analyse', 'User2')
+called 2223	times -	('Remove', 'Defender')
+called 3358	times -	('Remove', 'Enterprise1')
+called 991	times -	('Remove', 'Op_Server0')
+called 5290	times -	('Remove', 'User2')
+called 22709	times -	('Remove', 'User3')
+called 224	times -	('DecoyApache', 'Defender')
+called 101	times -	('DecoyApache', 'Enterprise0')
+called 1	times -	('DecoyApache', 'Op_Server0')
+called 436	times -	('DecoyApache', 'User2')
+called 503	times -	('DecoyFemitter', 'Enterprise1')
+called 1000	times -	('DecoyFemitter', 'User2')
+called 243	times -	('DecoyHarakaSMPT', 'Defender')
+called 1007	times -	('DecoyHarakaSMPT', 'Enterprise0')
+called 1	times -	('DecoyHarakaSMPT', 'Op_Server0')
+called 422	times -	('DecoySSHD', 'User2')
+called 11	times -	('DecoySSHD', 'User3')
+called 243	times -	('DecoyTomcat', 'Defender')
+called 497	times -	('DecoyTomcat', 'Enterprise0')
+called 1	times -	('DecoyTomcat', 'Op_Server0')
+called 1000	times -	('DecoyTomcat', 'User2')
+called 224	times -	('DecoyVsftpd', 'Defender')
+called 480	times -	('DecoyVsftpd', 'Enterprise0')
+called 1	times -	('DecoyVsftpd', 'Op_Server0')
+called 11	times -	('DecoyVsftpd', 'User3')
+called 392	times -	('DecoyVsftpd', 'User4')
+called 3651	times -	('Restore', 'Enterprise0')
+called 3888	times -	('Restore', 'Enterprise1')
+called 148	times -	('Restore', 'Enterprise2')
